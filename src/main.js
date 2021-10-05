@@ -4,4 +4,19 @@ import "./registerServiceWorker";
 import router from "./router";
 import store from "./store";
 
-createApp(App).use(store).use(router).mount("#app");
+/* import components */
+import Tile from "@/components/Tile";
+
+/* init app */
+const app = createApp(App);
+
+/* register global components */
+
+app.component("Tile", Tile);
+
+/* register store and router */
+app.use(store);
+app.use(router);
+
+/* mount app at id app */
+app.mount("#app");

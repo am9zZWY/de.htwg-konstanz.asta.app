@@ -1,0 +1,82 @@
+@import "colors";
+
+.nav {
+  margin: 30px 20px 30px;
+}
+
+.important-text {
+  font-size: 20px;
+  font-weight: bolder;
+}
+
+.big-link {
+  color: black;
+  padding: 10px 20px;
+  margin: 15px !important;
+  font-size: 36px;
+  font-weight: bolder;
+  text-decoration: none;
+}
+
+.tile-group {
+  display: grid;
+  margin-left: 5px;
+  margin-right: 5px;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  grid-gap: 10px;
+  grid-auto-rows: minmax(180px, 2fr);
+}
+
+.tile {
+  align-self: stretch;
+  background: $dark;
+  color: white;
+  box-shadow: $shadow;
+  text-decoration: none;
+}
+
+.tile-wrapper {
+  margin: 20px;
+}
+
+.inverted-tile {
+  background: white;
+  color: black;
+}
+
+/* Normal Tile: big title and small content */
+
+.tile-title {
+  min-font-size: 30px;
+  font-size: 30px;
+  max-font-size: 30px;
+  font-weight: bolder;
+  margin-top: 20px;
+  margin-bottom: 3px;
+}
+
+.tile-content {
+  margin-top: 10px;
+  margin-bottom: 5px;
+  font-size: 24px;
+}
+
+/* Big Tile: small title but big content */
+
+.big-tile-title {
+  font-size: 24px;
+  margin-top: 20px;
+  margin-bottom: 3px;
+}
+
+.big-tile-content {
+  font-size: 40px;
+  font-weight: bolder;
+  margin-top: 15px;
+  margin-bottom: 5px;
+}
+
+.tile-subtitle {
+  font-size: 18px;
+  margin-top: 25px;
+}

@@ -1,18 +1,21 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+  <div class="tile-group">
+    <tile tile-title="Speiseplan" tile-route-to="Mensa" />
+    <tile tile-title="Termine" tile-route-to="Calendar" deactivated />
+    <tile-drucker-konto tile-title="Guthaben" />
+    <tile tile-title="Noten" tile-route-to="Grades" deactivated />
+    <tile tile-title="Endlicht" tile-route-to="Endlicht" deactivated />
+    <tile tile-title="Einloggen" tile-route-to="Login" inverted />
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
+import TileDruckerKonto from "@/components/TileDruckerKonto";
 
 export default {
   name: "Home",
   components: {
-    HelloWorld,
+    TileDruckerKonto,
   },
 };
 </script>
