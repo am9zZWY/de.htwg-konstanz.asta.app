@@ -1,4 +1,5 @@
 module.exports = {
+  publicPath: process.env.NODE_ENV === "production" ? "/htwg-app-front/" : "/",
   pwa: {
     name: "HTWG App",
     themeColor: "#D9E5EC",
