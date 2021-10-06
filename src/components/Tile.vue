@@ -28,11 +28,11 @@ export default {
   props: {
     tileTitle: {
       type: String,
-      required: true,
+      required: false,
     },
     tileSubtitle: {
       type: String,
-      required: true,
+      required: false,
     },
     tileRouteTo: {
       type: String,
