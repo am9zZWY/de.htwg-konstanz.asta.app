@@ -6,13 +6,14 @@ import store from "./store";
 
 /* import components */
 import Tile from "@/components/Tile";
+import TileWait from "@/components/TileWait";
 
 /* init app */
 const app = createApp(App);
 
 /* register global components */
-
 app.component("Tile", Tile);
+app.component("TileWait", TileWait);
 
 /* register store and router */
 app.use(store);
