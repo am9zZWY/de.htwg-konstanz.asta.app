@@ -1,9 +1,9 @@
 <template>
   <tile
-    tile-title="Einloggen"
-    :tile-subtitle="subTitle"
-    tile-route-to="Login"
+    :tile-subtitle="greeting"
     inverted
+    tile-route-to="Login"
+    tile-title="Einloggen"
   />
 </template>
 
@@ -14,11 +14,17 @@ export default {
   name: "TileLogin",
   computed: {
     ...mapState(["username"]),
-    subTitle: function () {
-      if (this.username !== "" || this.username !== null) {
-        return `Hallo, ${this.username}!`;
-      }
-      return "Logge dich ein, um weitere Dienste zu verwenden";
+    isLoggedIn: function () {
+      return (
+        this.username !== "" &&
+        this.username !== null &&
+        typeof this.username !== "undefined"
+      );
+    },
+    greeting: function () {
+      return this.isLoggedIn
+        ? `Hallo, ${this.username}!`
+        : "Logge dich ein, um Dienste des Rechenzentrums zu verwenden";
     },
   },
 };
