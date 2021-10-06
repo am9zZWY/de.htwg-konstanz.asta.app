@@ -30,9 +30,11 @@ export default {
         body: JSON.stringify(body),
       })
         .then((result) => result.text())
-        .then(
-          (text) => (this.druckerGuthaben = text.replace(/,/, ".") + " Euro")
-        );
+        .then((text) => {
+          if (text !== "") {
+            this.druckerGuthaben = text.replace(/,/, ".") + " Euro";
+          }
+        });
     },
   },
   mounted() {
