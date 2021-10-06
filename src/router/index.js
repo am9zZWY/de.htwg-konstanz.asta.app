@@ -1,5 +1,6 @@
 import { createRouter, createWebHashHistory } from "vue-router";
 import Home from "../views/Home.vue";
+import Mensa from "../views/Mensa.vue";
 
 const routes = [
   {
@@ -11,7 +12,7 @@ const routes = [
   {
     path: "/Mensa",
     name: "Mensa",
-    component: () => import(/* webpackChunkName: "mensa" */ "../views/Mensa"),
+    component: Mensa,
   },
   {
     path: "/Termine",
@@ -23,6 +24,11 @@ const routes = [
     path: "/Login",
     name: "Login",
     component: () => import(/* webpackChunkName: "login" */ "../views/Login"),
+  },
+  {
+    path: "/About",
+    name: "About",
+    component: () => import(/* webpackChunkName: "about" */ "../views/About"),
   },
 ];
 
