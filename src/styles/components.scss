@@ -80,3 +80,32 @@
   font-size: 18px;
   margin-top: 25px;
 }
+
+/* Termine */
+.termine {
+  width: 100%;
+  height: 80vh;
+  border: none;
+}
+
+.termine:focus {
+  outline: none;
+}
+
+.termine[seamless] {
+  display: block;
+}
+
+/* Login */
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group {
+  text-align: left;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 15px;
+}
