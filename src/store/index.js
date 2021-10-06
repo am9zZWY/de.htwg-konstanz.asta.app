@@ -5,7 +5,13 @@ export default createStore({
     username: "",
     password: "",
   },
-  mutations: {},
+  mutations: {
+    changeCredentials(state, credentials = {}) {
+      const { username, password } = credentials;
+      state.username = username;
+      state.password = password;
+    },
+  },
   actions: {},
   modules: {},
 });
