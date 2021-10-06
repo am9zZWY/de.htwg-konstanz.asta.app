@@ -1,7 +1,11 @@
 <template>
   <div class="tile-group">
     <template v-for="(food, foodIndex) in mensaFood" :key="foodIndex">
-      <tile :tile-title="food.category" :tile-subtitle="food.price" class="food">
+      <tile
+        :tile-title="food.category"
+        :tile-subtitle="food.price"
+        class="food"
+      >
         {{ cleanString(food.title) }}
       </tile>
     </template>
