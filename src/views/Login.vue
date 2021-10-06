@@ -42,6 +42,7 @@ export default {
       });
       this.username = "";
       this.password = "";
+      this.$router.push("/Home");
     },
   },
 };
