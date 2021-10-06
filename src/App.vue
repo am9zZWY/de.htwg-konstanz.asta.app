@@ -1,10 +1,10 @@
 <template>
   <nav class="nav">
-    <router-link to="Home" class="big-link important-text">ÜBERSICHT</router-link>
+    <router-link class="big-link important-text" to="Home"
+      >ÜBERSICHT</router-link
+    >
   </nav>
-  <keep-alive>
-    <router-view />
-  </keep-alive>
+  <router-view />
 </template>
 
-<style src="./styles/main.scss" lang="scss" />
+<style lang="scss" src="./styles/main.scss" />
