@@ -13,6 +13,17 @@ const routes = [
     name: "Mensa",
     component: () => import(/* webpackChunkName: "mensa" */ "../views/Mensa"),
   },
+  {
+    path: "/Termine",
+    name: "Termine",
+    component: () =>
+      import(/* webpackChunkName: "termine" */ "../views/Termine"),
+  },
+  {
+    path: "/Login",
+    name: "Login",
+    component: () => import(/* webpackChunkName: "login" */ "../views/Login"),
+  },
 ];
 
 const router = createRouter({
