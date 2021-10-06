@@ -105,7 +105,9 @@
 .form-group {
   text-align: left;
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
+  flex-wrap: nowrap;
   justify-content: space-between;
   margin-top: 15px;
+  align-items: flex-start;
 }
