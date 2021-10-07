@@ -6,6 +6,7 @@
     <tile tile-title="Noten" tile-route-to="Noten" deactivated />
     <tile tile-title="Endlicht" tile-route-to="Endlicht" deactivated />
     <tile-login />
+    <tile tile-title="Campus Plan" tile-route-to="CampusPlan" />
   </div>
 </template>
 
