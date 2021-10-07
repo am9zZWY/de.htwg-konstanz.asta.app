@@ -1,6 +1,6 @@
 import { createRouter, createWebHashHistory } from "vue-router";
-import Home from "../views/Home.vue";
-import Mensa from "../views/Mensa.vue";
+import Home from "@/views/Home.vue";
+import Mensa from "@/views/Mensa.vue";
 
 const routes = [
   {
@@ -18,23 +18,28 @@ const routes = [
     path: "/Termine",
     name: "Termine",
     component: () =>
-      import(/* webpackChunkName: "termine" */ "../views/Termine"),
+      import(/* webpackChunkName: "termine" */ "@/views/Termine"),
+  },
+  {
+    path: "/Noten",
+    name: "Noten",
+    component: () => import(/* webpackChunkName: "noten" */ "@/views/Noten"),
   },
   {
     path: "/CampusPlan",
     name: "CampusPlan",
     component: () =>
-      import(/* webpackChunkName: "campus-plan" */ "../views/CampusPlan"),
+      import(/* webpackChunkName: "campus-plan" */ "@/views/CampusPlan"),
   },
   {
     path: "/Login",
     name: "Login",
-    component: () => import(/* webpackChunkName: "login" */ "../views/Login"),
+    component: () => import(/* webpackChunkName: "login" */ "@/views/Login"),
   },
   {
     path: "/About",
     name: "About",
-    component: () => import(/* webpackChunkName: "about" */ "../views/About"),
+    component: () => import(/* webpackChunkName: "about" */ "@/views/About"),
   },
 ];
 
