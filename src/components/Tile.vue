@@ -1,6 +1,12 @@
 <template>
-  <router-link
-    :class="['tile', { disabled: deactivated }, { 'inverted-tile': inverted }]"
+  <component
+    :is="tileRouteTo !== '' ? 'router-link' : 'div'"
+    :class="[
+      'tile',
+      { disabled: deactivated },
+      { 'inverted-tile': inverted },
+      { 'warning-tile': warning },
+    ]"
     :to="tileRouteTo"
   >
     <div class="tile-wrapper">
@@ -19,7 +25,7 @@
         {{ tileSubtitle }}
       </div>
     </div>
-  </router-link>
+  </component>
 </template>
 
 <script>
@@ -50,6 +56,11 @@ export default {
       default: false,
     },
     inverted: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
+    warning: {
       type: Boolean,
       required: false,
       default: false,
