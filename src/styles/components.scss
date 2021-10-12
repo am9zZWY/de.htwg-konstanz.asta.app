@@ -9,15 +9,22 @@
   font-weight: bolder;
 }
 
+/* Link */
+.link, .big-link {
+  text-decoration: none;
+  color: inherit;
+}
+
 .big-link {
   color: black;
   padding: 10px 20px;
   margin: 15px !important;
   font-size: 36px;
   font-weight: bolder;
-  text-decoration: none;
 }
 
+
+/* Tile */
 .tile-group {
   display: grid;
   margin-left: 5px;
@@ -43,6 +50,12 @@
   background: white;
   color: black;
 }
+
+.warning-tile {
+  background: #ff6961;
+  color: white;
+}
+
 
 /* Normal Tile: big title and small content */
 
@@ -84,16 +97,7 @@
 /* Termine */
 .termine {
   width: 100%;
-  height: 80vh;
-  border: none;
-}
-
-.termine:focus {
-  outline: none;
-}
-
-.termine[seamless] {
-  display: block;
+  text-align: left;
 }
 
 /* Login */
@@ -121,4 +125,22 @@ img {
 /* Table */
 table {
   text-align: left;
+}
+
+/* Note */
+.grades {
+  width: 100%;
+}
+
+.grade {
+  font-size: 10pt;
+  margin-bottom: 2px;
+}
+
+.subject {
+  text-align: left;
+}
+
+.status {
+  text-align: right;
 }
