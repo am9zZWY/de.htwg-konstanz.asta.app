@@ -15,7 +15,7 @@
           <input class="form-input" type="password" v-model="password" />
         </div>
         <div class="form-group">
-          <button @click="save">Einloggen</button>
+          <button @click="saveCredentialsToStore">Einloggen</button>
         </div>
       </div>
     </tile>
@@ -35,7 +35,7 @@ export default {
   },
   methods: {
     ...mapMutations(["changeCredentials"]),
-    save: function () {
+    saveCredentialsToStore: function () {
       this.changeCredentials({
         username: this.username,
         password: this.password,
