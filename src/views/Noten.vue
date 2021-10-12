@@ -1,24 +1,31 @@
 <template>
-  <table style="width: 100%" aria-describedby="Notenspiegel">
-    <tr>
-      <th id="pruefungsnummer">Prüfungsnummer</th>
-      <th id="pruefungstext">Prüfungstext</th>
-      <th id="semester">Semester</th>
-      <th id="note">Note</th>
-      <th id="ects">ECTS</th>
-      <th id="status">Status</th>
-    </tr>
-    <template v-for="grade in grades" :key="grade.number">
-      <tr>
-        <td>{{ grade.number }}</td>
-        <td>{{ grade.name }}</td>
-        <td>{{ grade.semester }}</td>
-        <td>{{ grade.grade }}</td>
-        <td>{{ grade.ects }}</td>
-        <td>{{ grade.status }}</td>
-      </tr>
+  <div class="tile-group">
+    <template v-for="semester in semesters" :key="semester">
+      <tile :tile-title="semester">
+        <table class="grades" :aria-describedby="`Tabelle mit Noten des ${semester}`">
+          <tr>
+            <th class="subject" id="subject">Fach</th>
+            <th class="status" id="status">Status/Note</th>
+          </tr>
+          <tr
+            v-for="grade in gradePerSemester[semester]"
+            :key="grade.number"
+            class="grade"
+          >
+            <td class="subject">{{ grade.name }}</td>
+            <td class="status">
+              <template v-if="cleanString(grade.grade) === ''">
+                {{ cleanString(grade.status) }}
+              </template>
+              <template v-else>
+                {{ cleanString(grade.grade) }}
+              </template>
+            </td>
+          </tr>
+        </table>
+      </tile>
     </template>
-  </table>
+  </div>
 </template>
 
 <script>
@@ -33,10 +40,39 @@ export default {
   },
   computed: {
     ...mapState(["username", "password"]),
+    /**
+     * Return map with all grades of a semester.
+     * @returns {{}}
+     */
+    gradePerSemester: function () {
+      let gradePerSemester = {};
+      this.grades.forEach((grade) => {
+        const semester = this.cleanString(grade.semester);
+        // check if semester is already a key of gradePerSemester
+        if (!(semester in gradePerSemester)) {
+          gradePerSemester[semester] = [];
+        }
+
+        // add grade to semester
+        // clean all values of grade
+        gradePerSemester[semester].push(
+          Object.assign(
+            {},
+            ...Object.entries(grade).map(([k, v]) => ({
+              [this.cleanString(k)]: this.cleanString(v),
+            }))
+          )
+        );
+      });
+      return gradePerSemester;
+    },
+    semesters: function () {
+      return Object.keys(this.gradePerSemester);
+    },
   },
   methods: {
     cleanString: function (string) {
-      return string.replace(/(\\n|\\t)/g, "");
+      return string.replace(/(\\n|\\t)/g, "").trim();
     },
     fetchNoten: async function () {
       const body = {
