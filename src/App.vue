@@ -1,8 +1,6 @@
 <template>
   <nav class="nav">
-    <router-link class="big-link important-text" to="Home"
-      >ÜBERSICHT</router-link
-    >
+    <router-link class="big-link important-text" to="Home">HTWG App</router-link>
   </nav>
   <router-view />
 </template>
