@@ -12,15 +12,20 @@
     <div class="tile-wrapper">
       <div
         :class="[
-          { 'big-tile-title': bigContent || tileIcon !== ''},
-          { 'tile-title': !bigContent && tileIcon === ''},
+          { 'big-tile-title': bigContent || tileIcon !== '' },
+          { 'tile-title': !bigContent && tileIcon === '' },
         ]"
       >
         {{ tileTitle }}
       </div>
-      <div :class="['tile-content', { 'big-tile-content': bigContent || tileIcon !== ''}]">
+      <div
+        :class="[
+          'tile-content',
+          { 'big-tile-content': bigContent || tileIcon !== '' },
+        ]"
+      >
         <slot>
-          <i :class="[tileIcon, 'icon']"/>
+          <em :class="[tileIcon, 'icon']" />
         </slot>
       </div>
       <div class="tile-subtitle">
@@ -41,7 +46,7 @@ export default {
     tileSubtitle: {
       type: String,
       required: false,
-      default: ""
+      default: "",
     },
     tileRouteTo: {
       type: String,
@@ -51,7 +56,7 @@ export default {
     tileIcon: {
       type: String,
       required: false,
-      default: ""
+      default: "",
     },
     bigContent: {
       type: Boolean,

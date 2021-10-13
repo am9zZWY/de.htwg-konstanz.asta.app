@@ -6,9 +6,15 @@
     />
     <tile inverted tile-type="div">
       Wenn du mehr über mich und meine Projekte erfahren möchtest, schaue auf
-      <a href="https://github.com/jpkmiller" rel="nofollow" target="_blank" class="link">
+      <a
+        href="https://github.com/jpkmiller"
+        rel="nofollow"
+        target="_blank"
+        class="link"
+      >
         <strong>github.com/jpkmiller</strong>
-      </a> vorbei.
+      </a>
+      vorbei.
     </tile>
     <tile>
       Wenn dir diese App gefällt, dann schreibe mir gerne eine E-Mail an

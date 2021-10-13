@@ -1,8 +1,21 @@
 <template>
   <div class="tile-group">
-    <tile tile-title="Speiseplan" tile-icon="ri-restaurant-line" tile-route-to="Mensa" />
-    <tile tile-title="Stundenplan" tile-icon="ri-calendar-line" tile-route-to="Stundenplan" deactivated />
-    <tile tile-title="Campus Plan" tile-icon="ri-map-2-line" tile-route-to="CampusPlan" />
+    <tile
+      tile-title="Speiseplan"
+      tile-icon="ri-restaurant-line"
+      tile-route-to="Mensa"
+    />
+    <tile
+      tile-title="Stundenplan"
+      tile-icon="ri-calendar-line"
+      tile-route-to="Stundenplan"
+      deactivated
+    />
+    <tile
+      tile-title="Campus Plan"
+      tile-icon="ri-map-2-line"
+      tile-route-to="CampusPlan"
+    />
     <tile tile-title="Noten" tile-route-to="Noten" />
     <tile-drucker-konto />
     <tile-termine />
