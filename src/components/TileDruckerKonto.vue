@@ -9,6 +9,7 @@
 
 <script>
 import { mapState } from "vuex";
+import fetchData from "@/helpers/fetchData";
 
 export default {
   name: "Account",
@@ -22,22 +23,24 @@ export default {
   },
   methods: {
     fetchDruckerGuthaben: async function () {
-      const body = {
+      const body = JSON.stringify({
         username: this.username || "",
         password: this.password || "",
         reqtype: "drucker",
-      };
+      });
 
-      fetch(`https://htwg-app-back.herokuapp.com/`, {
-        method: "POST",
-        body: JSON.stringify(body),
-      })
-        .then((result) => result.text())
-        .then((text) => {
-          if (text !== "") {
-            this.druckerGuthaben = text.replace(/,/, ".") + " Euro";
-          }
-        });
+      fetchData(
+        (result) => {
+          result.text().then((text) => {
+            if (text !== "") {
+              this.druckerGuthaben = text.replace(/,/, ".") + " Euro";
+            }
+          });
+        },
+        {
+          body: body,
+        }
+      );
     },
   },
   mounted() {
