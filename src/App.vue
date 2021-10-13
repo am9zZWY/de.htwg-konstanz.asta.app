@@ -7,4 +7,18 @@
   <router-view />
 </template>
 
+<script>
+import { mapMutations } from "vuex";
+
+export default {
+  name: "App",
+  methods: {
+    ...mapMutations(["getCredentials"]),
+  },
+  created() {
+    this.getCredentials();
+  },
+};
+</script>
+
 <style lang="scss" src="./styles/main.scss" />
