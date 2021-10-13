@@ -34,9 +34,9 @@ export default {
     };
   },
   methods: {
-    ...mapMutations(["changeCredentials"]),
+    ...mapMutations(["storeCredentials"]),
     saveCredentialsToStore: function () {
-      this.changeCredentials({
+      this.storeCredentials({
         username: this.username,
         password: this.password,
       });
