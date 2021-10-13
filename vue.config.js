@@ -5,4 +5,12 @@ module.exports = {
     themeColor: "#D9E5EC",
     msTileColor: "#D9E5EC",
   },
+  chainWebpack: (config) => {
+    config.module
+      .rule("raw")
+      .test(/\.txt$/)
+      .use("raw-loader")
+      .loader("raw-loader")
+      .end();
+  },
 };
