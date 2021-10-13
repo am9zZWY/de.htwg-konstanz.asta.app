@@ -2,10 +2,13 @@
   <div class="tile-group">
     <template v-for="semester in semesters" :key="semester">
       <tile :tile-title="semester">
-        <table class="grades" :aria-describedby="`Tabelle mit Noten des ${semester}`">
+        <table
+          :aria-describedby="`Tabelle mit Noten des ${semester}`"
+          class="grades"
+        >
           <tr>
-            <th class="subject" id="subject">Fach</th>
-            <th class="status" id="status">Status/Note</th>
+            <th id="subject" class="subject">Fach</th>
+            <th id="status" class="status">Status/Note</th>
           </tr>
           <tr
             v-for="grade in gradePerSemester[semester]"
@@ -30,6 +33,7 @@
 
 <script>
 import { mapState } from "vuex";
+import fetchData from "@/helpers/fetchData";
 
 export default {
   name: "Noten",
@@ -41,7 +45,7 @@ export default {
   computed: {
     ...mapState(["username", "password"]),
     /**
-     * Return map with all grades of a semester.
+     * Map with all grades of a semester.
      * @returns {{}}
      */
     gradePerSemester: function () {
@@ -66,8 +70,16 @@ export default {
       });
       return gradePerSemester;
     },
+    /**
+     * List of all semesters. Sorts them in case they aren't.
+     * @returns {string[]}
+     */
     semesters: function () {
-      return Object.keys(this.gradePerSemester);
+      return Object.keys(this.gradePerSemester).sort((a, b) => {
+        const semesterA = a.match(/(\d+\/\d+)|(\d+)/)[0];
+        const semesterB = b.match(/(\d+\/\d+)|(\d+)/)[0];
+        return semesterA.localeCompare(semesterB);
+      });
     },
   },
   methods: {
@@ -75,20 +87,22 @@ export default {
       return string.replace(/(\\n|\\t)/g, "").trim();
     },
     fetchNoten: async function () {
-      const body = {
+      const body = JSON.stringify({
         username: this.username || "",
         password: this.password || "",
         reqtype: "noten",
-      };
+      });
 
-      if (this.username !== "") {
-        fetch(`https://htwg-app-back.herokuapp.com/`, {
-          method: "POST",
-          body: JSON.stringify(body),
-        })
-          .then((result) => result.json())
-          .then((json) => (this.grades = json));
-      }
+      fetchData(
+        (result) => {
+          result.json().then((json) => {
+            this.grades = json;
+          });
+        },
+        {
+          body: body,
+        }
+      );
     },
   },
   mounted() {
