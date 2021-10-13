@@ -2,6 +2,7 @@
   <tile
     :tile-subtitle="greeting"
     inverted
+    tile-icon="ri-login-box-line"
     tile-route-to="Login"
     tile-title="Einloggen"
   />

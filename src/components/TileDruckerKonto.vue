@@ -1,5 +1,8 @@
 <template>
   <tile big-content inverted tile-subtitle="Druckerkonto" tile-title="Guthaben">
+    <template v-if="druckerGuthaben !== '-'">
+      <i class="ri-printer-line"/>
+    </template>
     {{ druckerGuthaben }}
   </tile>
 </template>
