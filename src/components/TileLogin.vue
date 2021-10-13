@@ -24,7 +24,7 @@ export default {
     },
     greeting: function () {
       return this.isLoggedIn
-        ? `Hallo, ${this.username}!`
+        ? `Hallo!`
         : "Logge dich ein, um Dienste des Rechenzentrums zu verwenden";
     },
   },
