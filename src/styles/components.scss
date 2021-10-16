@@ -27,6 +27,7 @@
 /* Tile */
 .tile-group {
   display: grid;
+  margin-top: 10px;
   margin-left: 5px;
   margin-right: 5px;
   grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
@@ -40,10 +41,12 @@
   color: white;
   box-shadow: $shadow;
   text-decoration: none;
+  overflow: auto;
 }
 
 .tile-wrapper {
   margin: 20px;
+  max-height: 350px;
 }
 
 .inverted-tile {
@@ -54,6 +57,16 @@
 .warning-tile {
   background: #ff6961;
   color: white;
+}
+
+.tile-list {
+  list-style: none;
+  text-align: left;
+  margin-left: 0;
+  padding-left: 0;
+  > * {
+    margin-top: 10px;
+  }
 }
 
 
@@ -97,6 +110,7 @@
 /* Termine */
 .termine {
   width: 100%;
+  font-size: small;
   text-align: left;
 }
 
@@ -143,4 +157,25 @@ table {
 
 .status {
   text-align: right;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 3px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: inherit;
+  border-radius: 5px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: $light;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: $primary;
 }
