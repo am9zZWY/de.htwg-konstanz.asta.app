@@ -1,6 +1,8 @@
 <template>
   <div class="tile-group">
-    <tile tile-subtitle="Du solltest ungefähr 1,5 bis 2,5 Liter am Tag trinken.">
+    <tile
+      tile-subtitle="Du solltest ungefähr 1,5 bis 2,5 Liter am Tag trinken."
+    >
       Hast du heute schon <strong>Wasser getrunken?</strong><br />
     </tile>
     <tile
@@ -18,8 +20,12 @@
     <tile inverted tile-title="Dir geht es nicht gut?">
       <ul class="tile-list">
         <li>
-          <a href="https://seezeit.com/beratung/psychotherapeutische-beratung/" rel="nofollow" target="_blank">Psychotherapeutische
-            Beratung</a>
+          <a
+            href="https://seezeit.com/beratung/psychotherapeutische-beratung/"
+            rel="nofollow"
+            target="_blank"
+            >Psychotherapeutische Beratung</a
+          >
         </li>
         <li>
           <a href="https://www.nightline-konstanz.de/kontakt.html">Nightline</a>
