@@ -1,6 +1,6 @@
 import { createRouter, createWebHashHistory } from "vue-router";
 import Home from "@/views/Home.vue";
-import Mensa from "@/views/Mensa.vue";
+import Canteen from "@/views/Canteen.vue";
 
 const routes = [
   {
@@ -10,9 +10,14 @@ const routes = [
     alias: ["/Home"],
   },
   {
-    path: "/Mensa",
-    name: "Mensa",
-    component: Mensa,
+    path: "/Canteen",
+    name: "Canteen",
+    component: Canteen,
+  },
+  {
+    path: "/Health",
+    name: "Health",
+    component: () => import(/* webpackChunkName: "health" */ "@/views/Health"),
   },
   {
     path: "/Termine",
@@ -21,9 +26,9 @@ const routes = [
       import(/* webpackChunkName: "termine" */ "@/views/Termine"),
   },
   {
-    path: "/Noten",
-    name: "Noten",
-    component: () => import(/* webpackChunkName: "noten" */ "@/views/Noten"),
+    path: "/Grades",
+    name: "Grades",
+    component: () => import(/* webpackChunkName: "grades" */ "@/views/Grades"),
   },
   {
     path: "/CampusPlan",
