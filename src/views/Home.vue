@@ -1,32 +1,38 @@
 <template>
   <div class="tile-group">
     <tile
-      tile-title="Speiseplan"
       tile-icon="ri-restaurant-line"
-      tile-route-to="Mensa"
+      tile-route-to="Canteen"
+      tile-title="Speiseplan"
     />
     <tile
-      tile-title="Stundenplan"
+      is-deactivated
       tile-icon="ri-calendar-line"
-      tile-route-to="Stundenplan"
-      deactivated
+      tile-route-to="Timetable"
+      tile-title="Stundenplan"
     />
     <tile
-      tile-title="Campus Plan"
+      inverted
+      tile-icon="ri-mental-health-line"
+      tile-route-to="Health"
+      tile-title="Gesundheit"
+    />
+    <tile
       tile-icon="ri-map-2-line"
       tile-route-to="CampusPlan"
+      tile-title="Campus Plan"
     />
-    <tile tile-title="Noten" tile-route-to="Noten" />
+    <tile tile-route-to="Grades" tile-title="Noten" />
     <tile-drucker-konto />
     <tile-termine />
     <tile
-      tile-title="Endlicht"
+      is-deactivated
       tile-icon="ri-cup-line"
       tile-route-to="Endlicht"
-      deactivated
+      tile-title="Endlicht"
     />
     <tile-login />
-    <tile tile-title="Über" tile-route-to="About" />
+    <tile tile-route-to="About" tile-title="Über" />
   </div>
 </template>
 
