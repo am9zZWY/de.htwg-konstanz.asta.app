@@ -3,9 +3,10 @@
     :is="tileRouteTo !== '' ? 'router-link' : 'div'"
     :class="[
       'tile',
-      { disabled: deactivated },
+      { disabled: isDeactivated },
       { 'inverted-tile': inverted },
       { 'warning-tile': warning },
+      { button: isButton },
     ]"
     :to="tileRouteTo"
   >
@@ -58,12 +59,17 @@ export default {
       required: false,
       default: "",
     },
+    isButton: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
     bigContent: {
       type: Boolean,
       required: false,
       default: false,
     },
-    deactivated: {
+    isDeactivated: {
       type: Boolean,
       required: false,
       default: false,
