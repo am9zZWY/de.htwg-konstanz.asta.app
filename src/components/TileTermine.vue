@@ -10,32 +10,19 @@
 </template>
 
 <script>
+import { weekday, date } from "@/helpers/date";
+
 export default {
   name: "TileTermine",
-  data() {
-    return {
-      weekdays: [
-        "Montag",
-        "Dienstag",
-        "Mittwoch",
-        "Donnerstag",
-        "Freitag",
-        "Samstag",
-        "Sonntag",
-      ],
-    };
-  },
   computed: {
     today: function () {
       return new Date();
     },
     date: function () {
-      return `${this.today.getDate()}.${
-        this.today.getMonth() + 1
-      }.${this.today.getFullYear()}`;
+      return date(this.today);
     },
     weekday: function () {
-      return this.weekdays[this.today.getDay() - 1];
+      return weekday(this.today);
     },
   },
 };
