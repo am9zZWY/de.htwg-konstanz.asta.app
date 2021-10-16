@@ -65,7 +65,7 @@ export default {
     },
   },
   created() {
-    fetch("https://htwg-app-back.herokuapp.com/?mensa_new")
+    fetch("https://htwg-app-back.herokuapp.com/?mensa")
       .then((response) => response.json())
       .then((json) => (this.allFood = json))
       .then(() => this.updateTimestamp());
