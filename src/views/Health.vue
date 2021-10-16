@@ -7,7 +7,7 @@
       inverted
       tile-icon="ri-time-line"
       tile-subtitle="Pausen sind wichtig, um die Konzentration aufzubauen."
-      tile-title="Lege auch Mal eine Pause ein, wenn du Lernst."
+      tile-title="Achte auf regelmäßige Pausen."
     />
     <tile
       tile-icon="ri-windy-line"
