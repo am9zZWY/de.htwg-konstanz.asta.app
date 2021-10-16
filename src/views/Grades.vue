@@ -1,4 +1,5 @@
 <template>
+  <tile is-button @click="changeOrder">Sortierung ändern</tile>
   <div class="tile-group">
     <template v-for="semester in semesters" :key="semester">
       <tile :tile-title="semester">
@@ -40,6 +41,7 @@ export default {
   data() {
     return {
       grades: [],
+      order: 1,
     };
   },
   computed: {
@@ -78,13 +80,20 @@ export default {
       return Object.keys(this.gradePerSemester).sort((a, b) => {
         const semesterA = a.match(/(\d+\/\d+)|(\d+)/)[0];
         const semesterB = b.match(/(\d+\/\d+)|(\d+)/)[0];
-        return semesterA.localeCompare(semesterB);
+        if (this.order === 1) {
+          return semesterA.localeCompare(semesterB);
+        } else {
+          return semesterB.localeCompare(semesterA);
+        }
       });
     },
   },
   methods: {
     cleanString: function (string) {
       return string.replace(/(\\n|\\t)/g, "").trim();
+    },
+    changeOrder: function () {
+      this.order = this.order * -1;
     },
     fetchNoten: async function () {
       const body = JSON.stringify({
