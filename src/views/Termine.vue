@@ -1,6 +1,10 @@
 <template>
-  <div class="termine" id="termine">
-    <div v-html="html" />
+  <div class="tile-group">
+    <tile inverted>
+      <div id="termine" class="termine">
+        <div v-html="html" />
+      </div>
+    </tile>
   </div>
 </template>
 
