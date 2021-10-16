@@ -1,7 +1,5 @@
 <template>
-  <h2>
-    {{ weekday }} {{ date }}
-  </h2>
+  <h2>{{ weekday }} {{ date }}</h2>
   <div class="tile-group">
     <template v-if="typeof mensaFood !== 'undefined'">
       <template v-for="(food, foodIndex) in mensaFood.items" :key="foodIndex">
@@ -52,8 +50,8 @@ export default {
       this.timestamp = roundDate(this.timestamp);
     },
     priceToString: function (price) {
-      return `${price[0]}€ Studierende | ${price[1]}€ Schüler | ${price[2]}€ Mitarbeiter | ${price[3]}€ Gäste`
-    }
+      return `${price[0]}€ Studierende | ${price[1]}€ Schüler | ${price[2]}€ Mitarbeiter | ${price[3]}€ Gäste`;
+    },
   },
   computed: {
     mensaFood: function () {
@@ -67,7 +65,7 @@ export default {
     },
   },
   created() {
-    fetch("http://localhost:8000/?mensa_new")
+    fetch("https://htwg-app-back.herokuapp.com/?mensa_new")
       .then((response) => response.json())
       .then((json) => (this.allFood = json))
       .then(() => this.updateTimestamp());
