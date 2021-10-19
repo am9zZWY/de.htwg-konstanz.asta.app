@@ -22,11 +22,14 @@
       tile-route-to="CampusPlan"
       tile-title="Campus Plan"
     />
-    <tile tile-route-to="Grades" tile-title="Noten" />
+    <tile
+      tile-route-to="Grades"
+      tile-title="Noten"
+      tile-subtitle="Eine Übersicht über deine bisherhigen Leistungen"
+    />
     <tile-drucker-konto />
     <tile-termine />
     <tile
-      is-deactivated
       tile-icon="ri-cup-line"
       tile-route-to="Endlicht"
       tile-title="Endlicht"
