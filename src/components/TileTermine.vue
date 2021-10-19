@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import { weekday, date } from "@/helpers/date";
+import { weekday, formatDate } from "@/helpers/date";
 
 export default {
   name: "TileTermine",
@@ -19,7 +19,7 @@ export default {
       return new Date();
     },
     date: function () {
-      return date(this.today);
+      return formatDate(this.today);
     },
     weekday: function () {
       return weekday(this.today);
