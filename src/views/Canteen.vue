@@ -1,13 +1,13 @@
 <template>
-  <h2>{{ weekday }} {{ date }}</h2>
+  <div>
+    <h1 class="">{{ weekday }} {{ formattedDate }}</h1>
+    <button class="button" @click="changeDay(-1)">Vorheriger Tag</button>
+    <button class="button" @click="changeDay(1)">Nächster Tag</button>
+  </div>
   <div class="tile-group">
     <template v-if="typeof mensaFood !== 'undefined'">
       <template v-for="(food, foodIndex) in mensaFood.items" :key="foodIndex">
-        <tile
-          :tile-subtitle="priceToString(food.price)"
-          :tile-title="food.category"
-          class="food"
-        >
+        <tile :tile-title="`${food.category} | ${food.price[0]}€`" class="food">
           {{ cleanString(food.title) }}
         </tile>
       </template>
@@ -19,59 +19,55 @@
 </template>
 
 <script>
-import { date, roundDate, toSeconds, weekday } from "@/helpers/date";
+import { formatDate, dayAsNumber, weekday, createDate } from "@/helpers/date";
 
 export default {
   name: "Mensa",
   data() {
     return {
       allFood: {},
-      timestamp: 0,
+      foodIndex: 0,
+      date: new Date(),
+      formattedDate: "",
+      weekday: "",
     };
   },
   methods: {
     cleanString: function (string) {
       return string.replace(/[0-9(),]\w?/g, "");
     },
-    /**
-     * If actual day is not found in map then update the timestamp
-     * and display the food for the next available day.
-     * @param tries
-     */
-    updateTimestamp: function (tries = 0) {
-      let roundedDate = toSeconds(roundDate(this.timestamp)).toString();
-      if (!(roundedDate in this.allFood) && tries < 10) {
-        let dateOfTimeStamp = new Date(this.timestamp);
-        dateOfTimeStamp.setDate(dateOfTimeStamp.getDate() + 1);
-        this.timestamp = dateOfTimeStamp.getTime();
-        this.updateTimestamp(tries + 1);
-        return;
-      }
-      this.timestamp = roundDate(this.timestamp);
-    },
-    priceToString: function (price) {
-      return `${price[0]}€ Studierende | ${price[1]}€ Schüler | ${price[2]}€ Mitarbeiter | ${price[3]}€ Gäste`;
+    changeDay: function (direction) {
+      const days = Object.keys(this.allFood).length;
+      this.foodIndex =
+        direction === 1
+          ? (this.foodIndex + 1) % days
+          : (this.foodIndex - 1 + days) % days;
+      this.date = new Date(this.timestamp * 1000);
+      this.formattedDate = formatDate(this.date);
+      this.weekday = weekday(this.date);
     },
   },
   computed: {
     mensaFood: function () {
-      return this.allFood[toSeconds(this.timestamp)];
+      return this.allFood[this.timestamp];
     },
-    date: function () {
-      return date(new Date(this.timestamp));
+    timestamp: function () {
+      return this.timestamps[this.foodIndex];
     },
-    weekday: function () {
-      return weekday(new Date(this.timestamp));
+    timestamps: function () {
+      return Object.keys(this.allFood);
     },
   },
   created() {
     fetch("https://htwg-app-back.herokuapp.com/?mensa")
       .then((response) => response.json())
-      .then((json) => (this.allFood = json))
-      .then(() => this.updateTimestamp());
+      .then((json) => (this.allFood = json));
   },
   mounted() {
-    this.timestamp = new Date().getTime();
+    this.date = createDate(true);
+    this.foodIndex = dayAsNumber(this.date, true);
+    this.formattedDate = formatDate(this.date);
+    this.weekday = weekday(this.date);
   },
 };
 </script>
