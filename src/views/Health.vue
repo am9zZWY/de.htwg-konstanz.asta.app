@@ -9,18 +9,22 @@
       inverted
       tile-icon="ri-time-line"
       tile-subtitle="Pausen sind wichtig, um die Konzentration aufzubauen."
-      tile-title="Achte auf regelmäßige Pausen."
+      tile-title="Achte auf regelmäßige Pausen und ausreichend Schlaf."
     />
     <tile
       tile-icon="ri-windy-line"
-      tile-subtitle="Wieder ein... und wieder aus."
-      tile-title="Tief einatmen! Und wieder aus..."
+      tile-title="Eine gleichmäßige, bewusste Atmung hilft dir Stress abzubauen."
     />
-    <tile tile-title="Achte auf dich!">Überarbeite dich nicht.</tile>
+    <tile
+      tile-icon="ri-battery-low-line"
+      tile-subtitle="Überarbeite dich nicht. Versuche dir die Arbeit aufzuteilen."
+      tile-title="Achte auf dich!"
+    ></tile>
     <tile inverted tile-title="Dir geht es nicht gut?">
       <ul class="tile-list">
         <li>
           <a
+            class="link decorate"
             href="https://seezeit.com/beratung/psychotherapeutische-beratung/"
             rel="nofollow"
             target="_blank"
@@ -28,7 +32,13 @@
           >
         </li>
         <li>
-          <a href="https://www.nightline-konstanz.de/kontakt.html">Nightline</a>
+          <a
+            class="link decorate"
+            href="https://www.nightline-konstanz.de/kontakt.html"
+            rel="nofollow"
+            target="_blank"
+            >Nightline</a
+          >
         </li>
       </ul>
     </tile>
