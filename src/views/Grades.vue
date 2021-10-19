@@ -1,8 +1,15 @@
 <template>
-  <tile is-button @click="changeOrder">Sortierung ändern</tile>
+  <div>
+    <button class="button dark-bg" @click="changeOrder">
+      Sortierung ändern
+    </button>
+  </div>
   <div class="tile-group">
     <template v-for="semester in semesters" :key="semester">
-      <tile :tile-title="semester">
+      <tile
+        :tile-title="semester"
+        :tile-subtitle="`${calcECTS(gradePerSemester[semester])} ECTS-Punkte`"
+      >
         <table
           :aria-describedby="`Tabelle mit Noten des ${semester}`"
           class="grades"
@@ -93,7 +100,10 @@ export default {
       return string.replace(/(\\n|\\t)/g, "").trim();
     },
     changeOrder: function () {
-      this.order = this.order * -1;
+      this.order *= -1;
+    },
+    calcECTS: function (grades) {
+      return grades.reduce((ects, grade) => parseInt(grade.ects) + ects, 0);
     },
     fetchNoten: async function () {
       const body = JSON.stringify({
