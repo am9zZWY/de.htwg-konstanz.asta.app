@@ -4,7 +4,7 @@
       tile-subtitle="Ich bin Josef. Der Entwickler der HTWG App."
       tile-title="Hallo"
     />
-    <tile inverted tile-type="div">
+    <tile is-inverted tile-type="div">
       Wenn du mehr über mich und meine Projekte erfahren möchtest, schaue auf
       <a
         href="https://github.com/jpkmiller"

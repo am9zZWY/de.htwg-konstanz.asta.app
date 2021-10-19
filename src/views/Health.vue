@@ -6,7 +6,7 @@
       Hast du heute schon <strong>Wasser getrunken?</strong><br />
     </tile>
     <tile
-      inverted
+      is-inverted
       tile-icon="ri-time-line"
       tile-subtitle="Pausen sind wichtig, um die Konzentration aufzubauen."
       tile-title="Achte auf regelmäßige Pausen und ausreichend Schlaf."
@@ -20,7 +20,7 @@
       tile-subtitle="Überarbeite dich nicht. Versuche dir die Arbeit aufzuteilen."
       tile-title="Achte auf dich!"
     ></tile>
-    <tile inverted tile-title="Dir geht es nicht gut?">
+    <tile is-inverted tile-title="Dir geht es nicht gut?">
       <ul class="tile-list">
         <li>
           <a

@@ -1,6 +1,6 @@
 <template>
   <div class="tile-group">
-    <tile inverted>
+    <tile is-inverted>
       <div id="termine" class="termine">
         <div v-html="html" />
       </div>

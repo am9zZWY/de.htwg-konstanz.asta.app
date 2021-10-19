@@ -1,6 +1,7 @@
 <template>
   <div class="tile-group">
     <tile
+      is-wide
       tile-icon="ri-restaurant-line"
       tile-route-to="Canteen"
       tile-title="Speiseplan"
@@ -34,7 +35,7 @@
       tile-route-to="Endlicht"
       tile-title="Endlicht"
     />
-    <tile-login />
+    <tile-login is-wide />
     <tile tile-route-to="About" tile-title="Über" />
   </div>
 </template>

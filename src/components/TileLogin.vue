@@ -1,7 +1,7 @@
 <template>
   <tile
     :tile-subtitle="greeting"
-    inverted
+    is-inverted
     tile-icon="ri-login-box-line"
     tile-route-to="Login"
     tile-title="Einloggen"

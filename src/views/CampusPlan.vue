@@ -6,7 +6,7 @@
         src="https://www.htwg-konstanz.de/fileadmin/pub/allgemein/Campusplan/Campusplan_2017_3.PNG"
       />
     </tile>
-    <tile tile-title="Adresse" inverted>
+    <tile tile-title="Adresse" is-inverted>
       Hochschule Konstanz<br />
       Alfred-Wachtel-Straße 8<br />
       78462 Konstanz<br />

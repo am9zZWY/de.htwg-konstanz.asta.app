@@ -9,7 +9,7 @@
       <div class="left">* Auch Laktosefrei</div>
       <div class="left">** Pfand 1€</div>
     </tile>
-    <tile inverted tile-title="Endlicht Öffnungszeiten">
+    <tile is-inverted tile-title="Endlicht Öffnungszeiten">
       <div v-html="times" />
     </tile>
   </div>

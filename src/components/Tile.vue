@@ -4,9 +4,10 @@
     :class="[
       'tile',
       { disabled: isDeactivated },
-      { 'inverted-tile': inverted },
+      { 'inverted-tile': isInverted },
       { 'warning-tile': warning },
       { button: isButton },
+      { 'tile-wide': isWide },
     ]"
     :to="tileRouteTo"
   >
@@ -74,7 +75,12 @@ export default {
       required: false,
       default: false,
     },
-    inverted: {
+    isInverted: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
+    isWide: {
       type: Boolean,
       required: false,
       default: false,
