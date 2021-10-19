@@ -1,18 +1,20 @@
 @import "colors";
 
+/********************************************************/
+/****************** Navigation ******************/
 .nav {
   margin: 30px 20px 30px;
 }
 
-.important-text {
-  font-size: 20px;
-  font-weight: bolder;
-}
-
-/* Link */
+/********************************************************/
+/****************** Links ******************/
 .link, .big-link {
   text-decoration: none;
-  color: inherit;
+  color: black;
+}
+
+.link.decorate {
+  text-decoration: black underline;
 }
 
 .big-link {
@@ -23,16 +25,17 @@
   font-weight: bolder;
 }
 
-
-/* Tile */
+/********************************************************/
+/****************** Tile ******************/
 .tile-group {
   display: grid;
   margin-top: 10px;
   margin-left: 5px;
   margin-right: 5px;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
   grid-gap: 10px;
   grid-auto-rows: minmax(180px, 2fr);
+  justify-content: center;
 }
 
 .tile {
@@ -49,6 +52,7 @@
   max-height: 350px;
 }
 
+/* Tile options */
 .inverted-tile {
   background: white;
   color: black;
@@ -64,14 +68,13 @@
   text-align: left;
   margin-left: 0;
   padding-left: 0;
+
   > * {
     margin-top: 10px;
   }
 }
 
-
 /* Normal Tile: big title and small content */
-
 .tile-title {
   min-font-size: 30px;
   font-size: 30px;
@@ -103,18 +106,21 @@
 }
 
 .tile-subtitle {
-  font-size: 18px;
+  font-size: 20px;
   margin-top: 25px;
 }
 
-/* Termine */
+
+/********************************************************/
+/****************** Termine ******************/
 .termine {
   width: 100%;
   font-size: small;
   text-align: left;
 }
 
-/* Login */
+/********************************************************/
+/****************** Login ******************/
 .form {
   display: flex;
   flex-direction: column;
@@ -130,18 +136,21 @@
   align-items: flex-start;
 }
 
-/* Images */
+/********************************************************/
+/****************** Images ******************/
 img {
   width: 100%;
   height: auto;
 }
 
-/* Table */
+/********************************************************/
+/****************** Table ******************/
 table {
   text-align: left;
 }
 
-/* Note */
+/********************************************************/
+/****************** Grades ******************/
 .grades {
   width: 100%;
 }
@@ -159,7 +168,8 @@ table {
   text-align: right;
 }
 
-/* Scrollbar */
+/********************************************************/
+/****************** Scrollbar ******************/
 ::-webkit-scrollbar {
   width: 3px;
 }
@@ -178,4 +188,25 @@ table {
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: $primary;
+}
+
+/********************************************************/
+/****************** Buttons ******************/
+.button {
+  border: none;
+  cursor: pointer;
+  font-size: 24px;
+  box-shadow: $shadow;
+  padding: 5px;
+  background: $dark;
+  color: white;
+  margin: 5px;
+  font-weight: bolder;
+}
+
+.button.icon {
+  color: $dark;
+  background: none;
+  font-size: 48px;
+  box-shadow: none;
 }
