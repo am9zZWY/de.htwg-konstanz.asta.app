@@ -26,7 +26,7 @@
     <tile
       tile-route-to="Grades"
       tile-title="Noten"
-      tile-subtitle="Eine Übersicht über deine bisherhigen Leistungen"
+      tile-subtitle="Eine Übersicht über deine bisherigen Leistungen"
     />
     <tile-drucker-konto />
     <tile-termine />
