@@ -12,7 +12,7 @@ export function cookieCreator(options = {}) {
 }
 
 /**
- * Returns a cookie.
+ * Returns the value of a cookie.
  * @param key
  * @returns {string|null}
  */
