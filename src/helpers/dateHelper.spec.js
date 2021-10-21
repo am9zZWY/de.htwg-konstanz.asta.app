@@ -28,7 +28,7 @@ describe("dayAsNumber returns weekday from Date as Number ", () => {
   });
 });
 
-describe("formatDate returns Date in DD.MM.YYYY format", function() {
+describe("formatDate returns Date in DD.MM.YYYY format", function () {
   it("should return 21.10.2021", () => {
     const date = new Date(1634808912223); // Thursday, 21.10.21
     const weekday1 = formatDate(date);

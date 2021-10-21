@@ -41,4 +41,4 @@ test("Get cookie by key that was not created by cookieCreator", () => {
   document.cookie = ";bar=foo;";
 
   expect(cookieReader("bar")).toBe(null);
-})
+});
