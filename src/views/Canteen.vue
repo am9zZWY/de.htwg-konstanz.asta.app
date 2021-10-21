@@ -19,7 +19,12 @@
 </template>
 
 <script>
-import { formatDate, dayAsNumber, weekday, createDate } from "@/helpers/date";
+import {
+  formatDate,
+  dayAsNumber,
+  weekday,
+  createDate,
+} from "@/helpers/dateHelper";
 
 export default {
   name: "Mensa",
