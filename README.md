@@ -1,4 +1,4 @@
-# htwg-app-front
+# HTWG App - Frontend
 
 ## Project setup
 ```
