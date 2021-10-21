@@ -1,3 +1,8 @@
+/**
+ * Returns a new Date with the option to surpass the weekend.
+ * @param surpassWeekend
+ * @returns {*}
+ */
 export function createDate(surpassWeekend = false) {
   let d = new Date();
   let dAsNumber = dayAsNumber(d);
