@@ -29,6 +29,7 @@
       tile-subtitle="Eine Übersicht über deine bisherigen Leistungen"
     />
     <tile-drucker-konto />
+    <tile-library />
     <tile-termine />
     <tile
       tile-icon="ri-cup-line"
@@ -44,11 +45,13 @@
 import TileDruckerKonto from "@/components/TileDruckerKonto";
 import TileLogin from "@/components/TileLogin";
 import TileTermine from "@/components/TileTermine";
+import TileLibrary from "@/components/TileLibrary";
 
 export default {
   name: "Home",
   components: {
     TileDruckerKonto,
+    TileLibrary,
     TileLogin,
     TileTermine,
   },
