@@ -1,5 +1,11 @@
 <template>
-  <tile inverted big-content tile-title="Bibliothek" tile-subtitle="Auslastung">
+  <tile
+    inverted
+    big-content
+    tile-title="Bibliothek"
+    tile-subtitle="Auslastung"
+    tile-route-to="Library"
+  >
     <template v-if="fillRate === -1">Geschlossen</template>
     <template v-else>{{ fillRate }}%</template>
   </tile>

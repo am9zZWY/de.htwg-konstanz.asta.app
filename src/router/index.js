@@ -37,6 +37,12 @@ const routes = [
       import(/* webpackChunkName: "endlicht" */ "@/views/Endlicht"),
   },
   {
+    path: "/Library",
+    name: "Library",
+    component: () =>
+      import(/* webpackChunkName: "library" */ "@/views/Library"),
+  },
+  {
     path: "/CampusPlan",
     name: "CampusPlan",
     component: () =>
