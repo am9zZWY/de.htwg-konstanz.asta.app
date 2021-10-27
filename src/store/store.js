@@ -1,6 +1,6 @@
 import { createStore } from "vuex";
 import encrypt_data from "@/helpers/encryption";
-import { cookieCreator, cookieReader } from "@/helpers/cookieHelper";
+import { cookieCreator, cookieReader } from "@/helpers/cookieHelper.ts";
 
 export default createStore({
   state: {
