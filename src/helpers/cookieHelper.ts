@@ -3,7 +3,11 @@
  * @param options
  * @returns {string}
  */
-export function cookieCreator(options = {}) {
+export function cookieCreator(options: {
+  key: string;
+  value: string;
+  expiration: number;
+}): string {
   const { key, value, expiration } = options;
   const d = new Date();
   d.setTime(d.getTime() + expiration * 24 * 60 * 60 * 1000);
@@ -16,11 +20,12 @@ export function cookieCreator(options = {}) {
  * @param key
  * @returns {string|null}
  */
-export function cookieReader(key) {
+export function cookieReader(key: string): string | null {
   const value = `; ${document.cookie}`;
   const parts = value.split(`; ${key}=`);
+  let val = null;
   if (parts.length === 2) {
-    return parts.pop().split(";").shift();
+    val = parts.pop()?.split(";")?.shift();
   }
-  return null;
+  return val || null;
 }
