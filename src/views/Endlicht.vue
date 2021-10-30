@@ -33,18 +33,20 @@ export default {
   methods: {
     getPrices: function () {
       get("?endlicht&reqtype=preise").then(({ content, status }) => {
-        this.status = status;
+        this.status =
+          this.status !== 200 && status === 200 ? this.status : status;
         this.items = content;
       });
     },
     getTimes: function () {
       get("?endlicht&reqtype=zeiten").then(({ content, status }) => {
-        this.status = status;
+        this.status =
+          this.status !== 200 && status === 200 ? this.status : status;
         this.times = content;
       });
     },
   },
-  created() {
+  mounted() {
     this.getPrices();
     this.getTimes();
   },
