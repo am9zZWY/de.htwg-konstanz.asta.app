@@ -1,5 +1,5 @@
 <template>
-  <div class="tile-group">
+  <tile-group :status="status" tile-title="Endlicht">
     <tile tile-title="Endlicht Preise">
       <ul class="tile-list">
         <li v-for="(item, index_item) in items" :key="index_item">
@@ -8,39 +8,40 @@
       </ul>
       <div class="left">* Auch Laktosefrei</div>
       <div class="left">** Pfand 1€</div>
+      <div class="left">*** Pfand 0,25€</div>
     </tile>
     <tile is-inverted tile-title="Endlicht Öffnungszeiten">
       <div v-html="times" />
     </tile>
-  </div>
+  </tile-group>
 </template>
 
 <script>
-import fetchData from "@/helpers/fetchData";
+import { get } from "@/helpers/fetchData";
+import TileGroup from "@/components/tiles/TileGroup";
 
 export default {
   name: "Endlicht",
+  components: { TileGroup },
   data() {
     return {
-      requestAdress: "https://htwg-app-back.herokuapp.com/?endlicht&reqtype=",
       items: [],
       times: "",
+      status: 0,
     };
   },
   methods: {
     getPrices: function () {
-      fetchData((result) => {
-        result.json().then((json) => {
-          this.items = json;
-        });
-      }, this.requestAdress + "preise");
+      get("?endlicht&reqtype=preise").then(({ content, status }) => {
+        this.status = status;
+        this.items = content;
+      });
     },
     getTimes: function () {
-      fetchData((result) => {
-        result.text().then((json) => {
-          this.times = json;
-        });
-      }, this.requestAdress + "zeiten");
+      get("?endlicht&reqtype=zeiten").then(({ content, status }) => {
+        this.status = status;
+        this.times = content;
+      });
     },
   },
   created() {
