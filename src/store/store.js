@@ -1,5 +1,5 @@
 import { createStore } from "vuex";
-import encrypt_data from "@/helpers/encryption";
+import encrypt_data from "@/helpers/encryptionHelper.js";
 import { cookieCreator, cookieReader } from "@/helpers/cookieHelper.ts";
 
 export default createStore({
