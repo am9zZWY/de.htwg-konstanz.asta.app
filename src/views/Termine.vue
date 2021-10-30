@@ -1,6 +1,6 @@
 <template>
   <div class="tile-group">
-    <tile is-inverted>
+    <tile is-inverted :status="status">
       <div id="termine" class="termine">
         <div v-html="html" />
       </div>
@@ -9,11 +9,14 @@
 </template>
 
 <script>
+import { get } from "@/helpers/fetchData";
+
 export default {
   name: "Termine",
   data() {
     return {
       html: "",
+      status: 0,
     };
   },
   methods: {
@@ -30,9 +33,11 @@ export default {
     },
   },
   mounted() {
-    fetch("https://htwg-app-back.herokuapp.com/?termine")
-      .then((response) => response.text())
-      .then((text) => (this.html = text))
+    get("?termine")
+      .then(({ content, status }) => {
+        this.html = content;
+        this.status = status;
+      })
       .then(() => this.fixLinks());
   },
 };
