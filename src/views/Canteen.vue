@@ -4,7 +4,7 @@
     <button class="button" @click="changeDay(-1)">Vorheriger Tag</button>
     <button class="button" @click="changeDay(1)">Nächster Tag</button>
   </div>
-  <div class="tile-group">
+  <tile-group :status="status">
     <template v-if="typeof mensaFood !== 'undefined'">
       <template v-for="(food, foodIndex) in mensaFood.items" :key="foodIndex">
         <tile :tile-title="`${food.category} | ${food.price[0]}€`" class="food">
@@ -15,7 +15,7 @@
     <template v-else>
       <tile tile-title="Heute gibt es kein Essen"></tile>
     </template>
-  </div>
+  </tile-group>
 </template>
 
 <script>
@@ -25,9 +25,12 @@ import {
   weekday,
   createDate,
 } from "@/helpers/dateHelper";
+import { get } from "@/helpers/fetchData";
+import TileGroup from "@/components/tiles/TileGroup";
 
 export default {
   name: "Mensa",
+  components: { TileGroup },
   data() {
     return {
       allFood: {},
@@ -35,6 +38,7 @@ export default {
       date: new Date(),
       formattedDate: "",
       weekday: "",
+      status: 0,
     };
   },
   methods: {
@@ -64,9 +68,10 @@ export default {
     },
   },
   created() {
-    fetch("https://htwg-app-back.herokuapp.com/?mensa")
-      .then((response) => response.json())
-      .then((json) => (this.allFood = json));
+    get("?mensa").then(({ content, status }) => {
+      this.status = status;
+      this.allFood = content;
+    });
   },
   mounted() {
     this.date = createDate(true);
