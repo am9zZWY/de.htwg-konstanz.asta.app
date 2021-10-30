@@ -30,6 +30,8 @@
 </template>
 
 <script>
+import { get } from "@/helpers/fetchData";
+
 export default {
   name: "Library",
   data() {
@@ -48,13 +50,12 @@ export default {
   },
   methods: {
     fetchTimetable: async function () {
-      fetch(
+      get(
+        "",
         "https://webapi.affluences.com/api/timetable?token=wWAjgowjn7iD85&week_offset=0&index=0"
-      )
-        .then((resp) => resp.json())
-        .then((data) => {
-          this.times = data.times;
-        });
+      ).then(({ content }) => {
+        this.times = content.times;
+      });
     },
   },
   mounted() {
