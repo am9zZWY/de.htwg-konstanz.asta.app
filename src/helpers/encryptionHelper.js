@@ -2,8 +2,7 @@ const crypto = require("crypto");
 import publicKey from "./pubKey.txt";
 
 /**
- * Encrypts data via RSA encryption.
- *
+ * Encrypts data with RSA encryption.
  * @param {string} data
  */
 export default function encrypt_data(data) {
