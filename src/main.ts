@@ -4,8 +4,8 @@ import router from "./router/router";
 import store from "./store/store";
 
 /* import components */
-import Tile from "@/components/Tile.vue";
-import TileWait from "@/components/TileWait.vue";
+import Tile from "@/components/tiles/Tile.vue";
+import TileWait from "@/components/tiles/TileWait.vue";
 
 /* init app */
 const app = createApp(App);
