@@ -1,6 +1,6 @@
 <template>
   <tile
-    inverted
+    is-inverted
     big-content
     tile-title="Bibliothek"
     tile-subtitle="Auslastung"
@@ -12,6 +12,8 @@
 </template>
 
 <script>
+import { get } from "@/helpers/fetchData";
+
 export default {
   name: "TileTermine",
   data() {
@@ -21,11 +23,12 @@ export default {
   },
   methods: {
     fetchFillRate: async function () {
-      fetch("https://webapi.affluences.com/api/fillRate?token=6r3Kuo6JjNhH9e")
-        .then((resp) => resp.json())
-        .then((data) => {
-          this.fillRate = data.progress;
-        });
+      get(
+        "",
+        "https://webapi.affluences.com/api/fillRate?token=6r3Kuo6JjNhH9e"
+      ).then(({ content }) => {
+        this.fillRate = content.progress;
+      });
     },
   },
   mounted() {
