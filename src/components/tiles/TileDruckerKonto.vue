@@ -1,21 +1,26 @@
 <template>
-  <tile big-content inverted tile-subtitle="Druckerkonto" tile-title="Guthaben">
-    <template v-if="druckerGuthaben !== '-'">
-      <em class="ri-printer-line icon" />
-    </template>
+  <tile
+    :status="status"
+    big-content
+    is-inverted
+    tile-subtitle="Druckerkonto"
+    tile-title="Guthaben"
+  >
+    <em class="ri-printer-line icon" />
     {{ druckerGuthaben }}
   </tile>
 </template>
 
 <script>
 import { mapState } from "vuex";
-import fetchData from "@/helpers/fetchData";
+import { post } from "@/helpers/fetchData";
 
 export default {
   name: "Account",
   data() {
     return {
-      druckerGuthaben: "-",
+      druckerGuthaben: "",
+      status: 0,
     };
   },
   computed: {
@@ -29,22 +34,21 @@ export default {
         reqtype: "drucker",
       });
 
-      fetchData(
-        (result) => {
-          result.text().then((text) => {
-            if (text !== "") {
-              this.druckerGuthaben = text.replace(/,/, ".") + " Euro";
-            }
-          });
-        },
-        {
-          body: body,
+      post(body).then(({ content, status }) => {
+        this.status = status;
+        if (status === 200) {
+          this.druckerGuthaben = content.replace(/,/, ".") + " Euro";
         }
-      );
+      });
     },
   },
   mounted() {
     this.fetchDruckerGuthaben();
+  },
+  watch: {
+    username() {
+      this.fetchDruckerGuthaben();
+    },
   },
 };
 </script>
