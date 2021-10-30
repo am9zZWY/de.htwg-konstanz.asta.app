@@ -7,13 +7,12 @@
       tile-title="Speiseplan"
     />
     <tile
-      is-deactivated
       tile-icon="ri-calendar-line"
       tile-route-to="Timetable"
       tile-title="Stundenplan"
     />
     <tile
-      inverted
+      is-inverted
       tile-icon="ri-mental-health-line"
       tile-route-to="Health"
       tile-title="Gesundheit"
@@ -42,10 +41,10 @@
 </template>
 
 <script>
-import TileDruckerKonto from "@/components/TileDruckerKonto";
-import TileLogin from "@/components/TileLogin";
-import TileTermine from "@/components/TileTermine";
-import TileLibrary from "@/components/TileLibrary";
+import TileDruckerKonto from "@/components/tiles/TileDruckerKonto.vue";
+import TileLogin from "@/components/tiles/TileLogin.vue";
+import TileTermine from "@/components/tiles/TileTermine.vue";
+import TileLibrary from "@/components/tiles/TileLibrary.vue";
 
 export default {
   name: "Home",
