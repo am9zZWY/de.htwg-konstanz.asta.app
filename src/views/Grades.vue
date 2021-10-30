@@ -4,7 +4,7 @@
       Sortierung ändern
     </button>
   </div>
-  <div class="tile-group">
+  <tile-group :status="status" tile-title="Noten">
     <template v-for="semester in semesters" :key="semester">
       <tile
         :tile-title="semester"
@@ -36,19 +36,22 @@
         </table>
       </tile>
     </template>
-  </div>
+  </tile-group>
 </template>
 
 <script>
 import { mapState } from "vuex";
-import fetchData from "@/helpers/fetchData";
+import { post } from "@/helpers/fetchData";
+import TileGroup from "@/components/tiles/TileGroup";
 
 export default {
   name: "Noten",
+  components: { TileGroup },
   data() {
     return {
       grades: [],
       order: 1,
+      status: 0,
     };
   },
   computed: {
@@ -112,20 +115,19 @@ export default {
         reqtype: "noten",
       });
 
-      fetchData(
-        (result) => {
-          result.json().then((json) => {
-            this.grades = json;
-          });
-        },
-        {
-          body: body,
-        }
-      );
+      post(body).then(({ content, status }) => {
+        this.grades = content;
+        this.status = status;
+      });
     },
   },
   mounted() {
     this.fetchNoten();
+  },
+  watch: {
+    username() {
+      this.fetchNoten();
+    },
   },
 };
 </script>
