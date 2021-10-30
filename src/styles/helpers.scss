@@ -42,3 +42,11 @@
   box-shadow: none;
 }
 
+/* Email */
+
+.email {
+  user-select: none;
+}
+.email::selection, .email::-moz-selection {
+  background: none;
+}
