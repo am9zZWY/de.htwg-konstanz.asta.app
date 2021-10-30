@@ -5,6 +5,7 @@ module.exports = {
     themeColor: "#D9E5EC",
     msTileColor: "#D9E5EC",
   },
+  productionSourceMap: false,
   chainWebpack: (config) => {
     config.module
       .rule("raw")
