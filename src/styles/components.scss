@@ -18,7 +18,9 @@
 }
 
 .big-link {
-  color: black;
+  color: white;
+  background: $dark;
+  box-shadow: $shadow;
   padding: 10px 20px;
   margin: 15px !important;
   font-size: 36px;
@@ -32,7 +34,7 @@
   margin-top: 10px;
   margin-left: 5px;
   margin-right: 5px;
-  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
   grid-gap: 10px;
   grid-auto-rows: minmax(180px, 2fr);
   justify-content: center;
@@ -47,8 +49,13 @@
   overflow: auto;
 }
 
+a:hover {
+  transform: translate(0.1em, 0.25em);
+  box-shadow: $shadow-clicked;
+}
+
 .tile-wrapper {
-  margin: 20px;
+  margin: 25px;
   max-height: 350px;
 }
 
@@ -108,6 +115,14 @@
 .tile-subtitle {
   font-size: 20px;
   margin-top: 25px;
+}
+
+/********************************************************/
+/****************** Timetable ******************/
+.timetable {
+  width: 100%;
+  font-size: small;
+  text-align: left;
 }
 
 
