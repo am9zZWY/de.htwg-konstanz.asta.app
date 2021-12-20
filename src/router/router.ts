@@ -1,6 +1,7 @@
 import { createRouter, createWebHashHistory, Router } from "vue-router";
 import Home from "@/views/Home.vue";
 import Canteen from "@/views/Canteen.vue";
+import Timetable from "@/views/Timetable.vue";
 
 const routes = [
   {
@@ -13,6 +14,11 @@ const routes = [
     path: "/Canteen",
     name: "Canteen",
     component: Canteen,
+  },
+  {
+    path: "/Timetable",
+    name: "Timetable",
+    component: Timetable,
   },
   {
     path: "/Health",
