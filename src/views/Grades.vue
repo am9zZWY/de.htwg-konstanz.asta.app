@@ -44,7 +44,7 @@ import TileGroup from "@/components/tiles/TileGroup.vue";
 import { useStore } from "vuex";
 import { post } from "@/helpers/fetchData";
 import { computed, onMounted, Ref, ref } from "vue";
-import {nullOrUndefined} from "@/helpers/checks";
+import { nullOrUndefined } from "@/helpers/checks";
 
 export default {
   name: "Noten",
@@ -131,6 +131,6 @@ export default {
       calcECTS,
       cleanString,
     };
-  }
+  },
 };
 </script>
