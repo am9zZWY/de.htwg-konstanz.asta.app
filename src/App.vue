@@ -6,21 +6,19 @@
   </nav>
   <router-view v-slot="{ Component }">
     <keep-alive>
-      <component :is="Component" :key="$route.fullPath"></component>
+      <component :is="Component" :key="$route.fullPath" />
     </keep-alive>
   </router-view>
 </template>
 
 <script>
-import { mapMutations } from "vuex";
+import { useStore } from "vuex";
 
 export default {
   name: "App",
-  methods: {
-    ...mapMutations(["getCredentials"]),
-  },
-  created() {
-    this.getCredentials();
+  setup() {
+    const store = useStore();
+    store.commit("getCredentials");
   },
 };
 </script>
