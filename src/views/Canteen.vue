@@ -4,7 +4,7 @@
     <button class="button" @click="changeDay(-1)">Vorheriger Tag</button>
     <button class="button" @click="changeDay(1)">Nächster Tag</button>
   </div>
-  <tile-group>
+  <tile-group :status="status">
     <tile
       v-for="(item, foodIndex) in food"
       :key="foodIndex"
@@ -19,7 +19,7 @@
 <script lang="ts">
 import TileGroup from "@/components/tiles/TileGroup.vue";
 import { get } from "@/helpers/fetchData";
-import { computed, onMounted, ref } from "vue";
+import { computed, onMounted, Ref, ref } from "vue";
 import { nullOrUndefined } from "@/helpers/checks";
 
 export default {
@@ -27,11 +27,13 @@ export default {
   components: { TileGroup },
   setup() {
     const allFood: any = ref({});
+    const status: Ref<number> = ref(0);
     const index = ref(0);
 
     const getMensaFood = async () => {
-      const { content } = await get("?mensa");
-      allFood.value = content;
+      const result = await get("?mensa");
+      status.value = result.status;
+      allFood.value = result.content;
     };
 
     const weekdays = computed(() => Object.keys(allFood.value));
@@ -57,6 +59,7 @@ export default {
     return {
       food,
       weekday,
+      status,
       changeDay,
     };
   },
