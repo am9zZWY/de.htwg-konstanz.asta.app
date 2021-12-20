@@ -58,7 +58,7 @@ export async function handleResponse(
 export async function post(
   postBody: string,
   address: string = defaultAddress
-): Promise<{ content: string | object; status: number }> {
+): Promise<{ content: any; status: number }> {
   const response = await fetch(address, {
     method: "POST",
     body: postBody,
