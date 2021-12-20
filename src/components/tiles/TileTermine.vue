@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import { weekday, formatDate } from "@/helpers/dateHelper";
+import { weekday, formatDate } from "@/helpers/dateHelper.ts";
 
 export default {
   name: "TileTermine",
