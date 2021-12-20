@@ -39,95 +39,98 @@
   </tile-group>
 </template>
 
-<script>
-import { mapState } from "vuex";
+<script lang="ts">
+import TileGroup from "@/components/tiles/TileGroup.vue";
+import { useStore } from "vuex";
 import { post } from "@/helpers/fetchData";
-import TileGroup from "@/components/tiles/TileGroup";
+import { computed, onMounted, Ref, ref } from "vue";
+import {nullOrUndefined} from "@/helpers/checks";
 
 export default {
   name: "Noten",
   components: { TileGroup },
   data() {
     return {
-      grades: [],
       order: 1,
-      status: 0,
     };
   },
-  computed: {
-    ...mapState(["username", "password"]),
-    /**
-     * Map with all grades of a semester.
-     * @returns {{}}
-     */
-    gradePerSemester: function () {
-      let gradePerSemester = {};
-      this.grades.forEach((grade) => {
-        const semester = this.cleanString(grade.semester);
-        // check if semester is already a key of gradePerSemester
-        if (!(semester in gradePerSemester)) {
-          gradePerSemester[semester] = [];
-        }
+  setup() {
+    const store = useStore();
+    const username = computed(() => store.state.username);
+    const password = computed(() => store.state.password);
 
-        // add grade to semester
-        // clean all values of grade
-        gradePerSemester[semester].push(
-          Object.assign(
-            {},
-            ...Object.entries(grade).map(([k, v]) => ({
-              [this.cleanString(k)]: this.cleanString(v),
-            }))
-          )
-        );
-      });
-      return gradePerSemester;
-    },
-    /**
-     * List of all semesters. Sorts them in case they aren't.
-     * @returns {string[]}
-     */
-    semesters: function () {
-      return Object.keys(this.gradePerSemester).sort((a, b) => {
-        const semesterA = a.match(/(\d+\/\d+)|(\d+)/)[0];
-        const semesterB = b.match(/(\d+\/\d+)|(\d+)/)[0];
-        if (this.order === 1) {
-          return semesterA.localeCompare(semesterB);
-        } else {
-          return semesterB.localeCompare(semesterA);
-        }
-      });
-    },
-  },
-  methods: {
-    cleanString: function (string) {
-      return string.replace(/(\\n|\\t)/g, "").trim();
-    },
-    changeOrder: function () {
-      this.order *= -1;
-    },
-    calcECTS: function (grades) {
-      return grades.reduce((ects, grade) => parseInt(grade.ects) + ects, 0);
-    },
-    fetchNoten: async function () {
+    type Grade = {
+      semester: string;
+      name: string;
+      status: string;
+      ects: string;
+    };
+
+    const order: Ref<number> = ref(1);
+    const grades: Ref<Grade[]> = ref([]);
+    const status: Ref<number> = ref(0);
+
+    const getGrades = async () => {
       const body = JSON.stringify({
-        username: this.username || "",
-        password: this.password || "",
+        username: username.value || "",
+        password: password.value || "",
         reqtype: "noten",
       });
 
-      post(body).then(({ content, status }) => {
-        this.grades = content;
-        this.status = status;
-      });
-    },
-  },
-  mounted() {
-    this.fetchNoten();
-  },
-  watch: {
-    username() {
-      this.fetchNoten();
-    },
-  },
+      const result = await post(body);
+      grades.value = result.content as Grade[];
+      status.value = result.status;
+    };
+
+    const cleanString = (str: string) => str.replace(/(\\n|\\t)/g, "").trim();
+
+    const calcECTS = (grades: Grade[]) =>
+      grades.reduce((ects, grade) => parseInt(grade.ects) + ects, 0);
+
+    const changeOrder = () => (order.value *= -1);
+
+    const gradePerSemester = computed(() => {
+      return grades.value.reduce((map: any, grade: Grade) => {
+        if (!(grade.semester in map)) {
+          map[grade.semester] = [];
+        }
+        map[grade.semester].push(
+          Object.assign(
+            {},
+            ...Object.entries(grade).map(([k, v]) => ({
+              [cleanString(k)]: cleanString(v),
+            }))
+          )
+        );
+        return map;
+      }, {});
+    });
+
+    const semesters = computed(() =>
+      Object.keys(gradePerSemester.value).sort((a, b) => {
+        const semesterA = a.match(/(\d+\/\d+)|(\d+)/);
+        const semesterB = b.match(/(\d+\/\d+)|(\d+)/);
+        if (!nullOrUndefined(semesterA) && !nullOrUndefined(semesterB)) {
+          if (order.value === 1) {
+            return semesterA[0].localeCompare(semesterB[0]);
+          } else {
+            return semesterB[0].localeCompare(semesterA[0]);
+          }
+        }
+        return 1;
+      })
+    );
+
+    onMounted(getGrades);
+
+    return {
+      status,
+      semesters,
+      gradePerSemester,
+      changeOrder,
+      calcECTS,
+      cleanString,
+    };
+  }
 };
 </script>
