@@ -1,83 +1,64 @@
 <template>
   <div>
-    <h1 class="">{{ weekday }} {{ formattedDate }}</h1>
+    <h1 class="">{{ weekday }}</h1>
     <button class="button" @click="changeDay(-1)">Vorheriger Tag</button>
     <button class="button" @click="changeDay(1)">Nächster Tag</button>
   </div>
-  <tile-group :status="status">
-    <template v-if="typeof mensaFood !== 'undefined'">
-      <template v-for="(food, foodIndex) in mensaFood.items" :key="foodIndex">
-        <tile :tile-title="`${food.category} | ${food.price[0]}€`" class="food">
-          {{ cleanString(food.title) }}
-        </tile>
-      </template>
-    </template>
-    <template v-else>
-      <tile tile-title="Heute gibt es kein Essen"></tile>
-    </template>
+  <tile-group>
+    <tile
+      v-for="(item, foodIndex) in food"
+      :key="foodIndex"
+      :tile-title="`${item.category} | ${item.price[0]}€`"
+      class="food"
+    >
+      {{ item.title }}
+    </tile>
   </tile-group>
 </template>
 
-<script>
-import {
-  formatDate,
-  dayAsNumber,
-  weekday,
-  createDate,
-} from "@/helpers/dateHelper";
+<script lang="ts">
+import TileGroup from "@/components/tiles/TileGroup.vue";
 import { get } from "@/helpers/fetchData";
-import TileGroup from "@/components/tiles/TileGroup";
+import { computed, onMounted, ref } from "vue";
+import { nullOrUndefined } from "@/helpers/checks";
 
 export default {
   name: "Mensa",
   components: { TileGroup },
-  data() {
-    return {
-      allFood: {},
-      foodIndex: 0,
-      date: new Date(),
-      formattedDate: "",
-      weekday: "",
-      status: 0,
+  setup() {
+    const allFood: any = ref({});
+    const index = ref(0);
+
+    const getMensaFood = async () => {
+      const { content } = await get("?mensa");
+      allFood.value = content;
     };
-  },
-  methods: {
-    cleanString: function (string) {
-      return string.replace(/[0-9(),]\w?/g, "");
-    },
-    changeDay: function (direction) {
-      const days = Object.keys(this.allFood).length;
-      this.foodIndex =
-        direction === 1
-          ? (this.foodIndex + 1) % days
-          : (this.foodIndex - 1 + days) % days;
-      this.date = new Date(this.timestamp * 1000);
-      this.formattedDate = formatDate(this.date);
-      this.weekday = weekday(this.date);
-    },
-  },
-  computed: {
-    mensaFood: function () {
-      return this.allFood[this.timestamp];
-    },
-    timestamp: function () {
-      return this.timestamps[this.foodIndex];
-    },
-    timestamps: function () {
-      return Object.keys(this.allFood);
-    },
-  },
-  created() {
-    get("?mensa").then(({ content, status }) => {
-      this.status = status;
-      this.allFood = content;
+
+    const weekdays = computed(() => Object.keys(allFood.value));
+    const weekday = computed(() => weekdays.value[index.value]);
+
+    const food = computed(() => {
+      if (nullOrUndefined(allFood.value) || nullOrUndefined(weekday.value)) {
+        return [];
+      }
+      return allFood.value[weekday.value].items;
     });
-  },
-  mounted() {
-    this.date = createDate(true);
-    this.foodIndex = dayAsNumber(this.date, true);
-    this.formattedDate = formatDate(this.date);
-    this.weekday = weekday(this.date);
+
+    const changeDay = (direction: number) => {
+      const days = weekdays.value.length;
+      index.value =
+        direction === 1
+          ? (index.value + 1) % days
+          : (index.value - 1 + days) % days;
+    };
+
+    onMounted(getMensaFood);
+
+    return {
+      food,
+      weekday,
+      changeDay,
+    };
   },
 };
 </script>
