@@ -1,24 +1,39 @@
 # HTWG App - Frontend
 
-## Project setup
-```
+The [HTWG App](https://github.com/htwg-app/htwg-app-front) connects to [the backend](https://github.com/htwg-app/htwg-app-back) which is deployed on `Heroku`.
+
+## 1. Installation
+
+First, make sure `node@14.18.2` and `npm@6.14.15` are installed.
+
+Install all packages specified in `package.json`:
+
+```shell
 npm install
 ```
 
-### Compiles and hot-reloads for development
-```
+
+## 2. Development
+
+### 2.1 Start Server
+
+To start developing the backend you must start a server. It can be started with the following command:
+
+```shell
 npm run serve
 ```
 
-### Compiles and minifies for production
-```
-npm run build
-```
+This will start a server at `localhost:8080`.
 
-### Lints and fixes files
-```
+### 2.2 Lints and fixes files
+
+```shell
 npm run lint
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+### 2.3 Build for production
+
+This happens automatically on a push to the repository. It is then deployed via GitHub Action to GitHub Pages.
+```shell
+npm run build
+```
