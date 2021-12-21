@@ -16,6 +16,15 @@
       Wenn dir diese App gefällt, dann schreibe uns gerne eine E-Mail an:<br />
       <strong class="email">jo391mue at htwg-konstanz.de</strong>.
     </tile>
+    <tile tile-title="Dieses Projekt ist Open-Source" is-inverted>
+      Unter folgendem Link kannst du dir unseren Code anschauen <br/><br/>
+      <a class="link big-link"
+         href="https://www.github.com/htwg-app"
+          rel="nofollow"
+          target="_blank"
+      >GitHub <i class="ri-github-fill" /></a
+      >
+    </tile>
   </div>
 </template>
 
