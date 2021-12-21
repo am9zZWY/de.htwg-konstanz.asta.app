@@ -41,24 +41,15 @@
 
 <script lang="ts">
 import TileGroup from "@/components/tiles/TileGroup.vue";
-import { useStore } from "vuex";
-import { post } from "@/helpers/fetchData";
-import { computed, onMounted, Ref, ref } from "vue";
+import { computed, onMounted, Ref, ref, watchEffect } from "vue";
 import { nullOrUndefined } from "@/helpers/checks";
+import get_content_via_post from "@/helpers/post";
+import { useStore } from "vuex";
 
 export default {
   name: "Noten",
   components: { TileGroup },
-  data() {
-    return {
-      order: 1,
-    };
-  },
   setup() {
-    const store = useStore();
-    const username = computed(() => store.state.username);
-    const password = computed(() => store.state.password);
-
     type Grade = {
       semester: string;
       name: string;
@@ -70,14 +61,10 @@ export default {
     const grades: Ref<Grade[]> = ref([]);
     const status: Ref<number> = ref(0);
 
-    const getGrades = async () => {
-      const body = JSON.stringify({
-        username: username.value || "",
-        password: password.value || "",
-        reqtype: "noten",
-      });
+    const store = useStore();
 
-      const result = await post(body);
+    const getGrades = async () => {
+      const result = await get_content_via_post("noten", store);
       grades.value = result.content as Grade[];
       status.value = result.status;
     };
@@ -122,6 +109,7 @@ export default {
     );
 
     onMounted(getGrades);
+    watchEffect(getGrades);
 
     return {
       status,
