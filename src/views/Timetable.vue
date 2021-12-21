@@ -9,33 +9,26 @@
 </template>
 
 <script lang="ts">
-import { post } from "@/helpers/fetchData";
+import { onMounted, ref, watchEffect } from "vue";
+import get_content_via_post from "@/helpers/post";
 import { useStore } from "vuex";
-import { computed, onMounted, ref } from "vue";
 
 export default {
   name: "Timetable",
   setup() {
-    const store = useStore();
-    const username = computed(() => store.state.username);
-    const password = computed(() => store.state.password);
-
     const timetable = ref("");
     const status = ref(0);
 
-    const getTimetable = async () => {
-      const body = JSON.stringify({
-        username: username.value || "",
-        password: password.value || "",
-        reqtype: "stundenplan",
-      });
+    const store = useStore();
 
-      const result = await post(body);
+    const getTimetable = async () => {
+      const result = await get_content_via_post("stundenplan", store);
       timetable.value = result.content;
       status.value = result.status;
     };
 
     onMounted(getTimetable);
+    watchEffect(getTimetable);
 
     return {
       status,
