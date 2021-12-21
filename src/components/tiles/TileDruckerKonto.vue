@@ -11,44 +11,33 @@
   </tile>
 </template>
 
-<script>
-import { mapState } from "vuex";
-import { post } from "@/helpers/fetchData";
+<script lang="ts">
+import { onMounted, ref, watchEffect } from "vue";
+import get_content_via_post from "@/helpers/post";
+import { useStore } from "vuex";
 
 export default {
   name: "Account",
-  data() {
-    return {
-      druckerGuthaben: "",
-      status: 0,
-    };
-  },
-  computed: {
-    ...mapState(["username", "password"]),
-  },
-  methods: {
-    fetchDruckerGuthaben: async function () {
-      const body = JSON.stringify({
-        username: this.username || "",
-        password: this.password || "",
-        reqtype: "drucker",
-      });
+  setup() {
+    const druckerGuthaben = ref("");
+    const status = ref(0);
 
-      post(body).then(({ content, status }) => {
-        this.status = status;
-        if (status === 200) {
-          this.druckerGuthaben = content.replace(/,/, ".") + " Euro";
-        }
-      });
-    },
-  },
-  mounted() {
-    this.fetchDruckerGuthaben();
-  },
-  watch: {
-    username() {
-      this.fetchDruckerGuthaben();
-    },
+    const store = useStore();
+
+    const getDruckerGuthaben = async () => {
+      const result = await get_content_via_post("drucker", store);
+      druckerGuthaben.value = result.content.replace(/,/, ".") + "€";
+      status.value = result.status;
+    };
+
+    onMounted(getDruckerGuthaben);
+
+    watchEffect(getDruckerGuthaben);
+
+    return {
+      status,
+      druckerGuthaben,
+    };
   },
 };
 </script>
