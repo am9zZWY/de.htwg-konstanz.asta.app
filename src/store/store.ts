@@ -1,8 +1,8 @@
 import { createStore } from "vuex";
 import encrypt_data from "@/helpers/encryptionHelper.js";
-import { cookieCreator, cookieReader } from "@/helpers/cookieHelper.ts";
+import { cookieCreator, cookieReader } from "@/helpers/cookieHelper";
 
-export default createStore({
+export const store = createStore({
   state: {
     username: "",
     password: "",
