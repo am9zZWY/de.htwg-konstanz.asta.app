@@ -18,7 +18,5 @@ export default async function get_content_via_post(
     reqtype: reqtype,
   });
 
-  console.log(body);
-
   return await post(body);
 }
