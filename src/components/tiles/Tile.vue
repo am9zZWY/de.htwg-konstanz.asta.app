@@ -6,8 +6,6 @@
       { disabled: isDeactivated && !error },
       { 'inverted-tile': isInverted && !error },
       { 'warning-tile': error || isWarning },
-      { button: isButton },
-      { 'tile-wide': isWide },
     ]"
     :to="tileRouteTo"
   >
@@ -72,11 +70,6 @@ export default {
       required: false,
       default: "",
     },
-    isButton: {
-      type: Boolean,
-      required: false,
-      default: false,
-    },
     bigContent: {
       type: Boolean,
       required: false,
@@ -88,11 +81,6 @@ export default {
       default: false,
     },
     isInverted: {
-      type: Boolean,
-      required: false,
-      default: false,
-    },
-    isWide: {
       type: Boolean,
       required: false,
       default: false,
