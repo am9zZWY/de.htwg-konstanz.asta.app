@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "5d6d4529460cb3722b33",
+    "revision": "c10286f7d4b396d76529",
     "url": "/htwg-app-front/css/app.c3300e60.css"
   },
   {
@@ -20,16 +20,16 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/htwg-app-front/img/playstore.png"
   },
   {
-    "revision": "71288af77b9a1dd0509139889e631ab1",
+    "revision": "50074f264cf92b45002400058e27e62a",
     "url": "/htwg-app-front/index.html"
   },
   {
-    "revision": "93733592e02dd1c7027e",
-    "url": "/htwg-app-front/js/about.9b042be9.js"
+    "revision": "c83d72d41cd8a7ffd799",
+    "url": "/htwg-app-front/js/about.b9fe5b8c.js"
   },
   {
-    "revision": "5d6d4529460cb3722b33",
-    "url": "/htwg-app-front/js/app.5c66c501.js"
+    "revision": "c10286f7d4b396d76529",
+    "url": "/htwg-app-front/js/app.4dbf454d.js"
   },
   {
     "revision": "59027fd4128c689aaf61",
