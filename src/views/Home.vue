@@ -10,6 +10,7 @@
       tile-route-to="Timetable"
       tile-title="Stundenplan"
     />
+    <tile-immatrikulations-bescheinigung />
     <tile
       is-inverted
       tile-icon="ri-mental-health-line"
@@ -44,10 +45,12 @@ import TileDruckerKonto from "@/components/tiles/TileDruckerKonto.vue";
 import TileLogin from "@/components/tiles/TileLogin.vue";
 import TileTermine from "@/components/tiles/TileTermine.vue";
 import TileLibrary from "@/components/tiles/TileLibrary.vue";
+import TileImmatrikulationsBescheinigung from "@/components/tiles/TileImmatrikulationsBescheinigung";
 
 export default {
   name: "Home",
   components: {
+    TileImmatrikulationsBescheinigung,
     TileDruckerKonto,
     TileLibrary,
     TileLogin,

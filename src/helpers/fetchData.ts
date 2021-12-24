@@ -59,11 +59,18 @@ export async function post(
   postBody: string,
   address: string = defaultAddress
 ): Promise<{ content: any; status: number }> {
-  const response = await fetch(address, {
+  const response = await raw_post(postBody, address);
+  return handleResponse(response);
+}
+
+export async function raw_post(
+  postBody: string,
+  address: string = defaultAddress
+): Promise<Response> {
+  return await fetch(address, {
     method: "POST",
     body: postBody,
   });
-  return handleResponse(response);
 }
 
 export async function get(
