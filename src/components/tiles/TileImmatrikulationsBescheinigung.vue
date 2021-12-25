@@ -1,7 +1,10 @@
 <template>
   <tile tile-title="Immatrikulations Bescheinigung" is-inverted>
     <button :class="['button', { disabled: wait }]" @click="download">
-      <template v-if="wait"> Bitte warten ...</template>
+      <template v-if="wait && status === 0"> Bitte warten ...</template>
+      <template v-else-if="status !== 0 && status !== 200"
+        >Ein Fehler ist aufgetreten</template
+      >
       <template v-else>Herunterladen</template>
     </button>
   </tile>
@@ -19,6 +22,7 @@ export default {
   setup() {
     const store = useStore();
     const wait = ref(false);
+    const status = ref(0);
     const download = () => {
       wait.value = true;
       const username = computed(() => store?.state?.username);
@@ -30,21 +34,30 @@ export default {
         reqtype: "immatrikulations_bescheinigung",
       });
 
-      raw_post(body)
-        .then((result) => result.blob())
-        .then((blob) => {
+      raw_post(body).then((result) => {
+        if (result.status === 200) {
+          // ok
+          return result.blob().then((blob) => {
+            wait.value = false;
+            status.value = 200;
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = "Immatrikulations_Bescheinigung.pdf";
+            document.body.appendChild(a);
+            a.click();
+            a.remove();
+          });
+        } else {
+          // error e.g. not logged in
+          status.value = -1;
           wait.value = false;
-          const url = window.URL.createObjectURL(blob);
-          const a = document.createElement("a");
-          a.href = url;
-          a.download = "Immatrikulations_Bescheinigung.pdf";
-          document.body.appendChild(a);
-          a.click();
-          a.remove();
-        });
+        }
+      });
     };
     return {
       wait,
+      status,
       download,
     };
   },
