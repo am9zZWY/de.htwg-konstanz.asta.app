@@ -33,19 +33,18 @@ export function statusToString(status: number): string {
 export async function handleResponse(
   response: Response
 ): Promise<{ content: string | object; status: number }> {
-  let responseData: string | object;
+  let responseData: string | object = "";
   if (response.status === 200) {
     const contentType = response.headers.get("content-type");
-    if (
-      !nullOrUndefined(contentType) &&
-      contentType.includes("application/json")
-    ) {
-      responseData = await response.json();
-    } else if (
-      !nullOrUndefined(contentType) &&
-      (contentType.includes("text/plain") || contentType.includes("text/html"))
-    ) {
-      responseData = await response.text();
+    if (!nullOrUndefined(contentType)) {
+      if (contentType.includes("application/json")) {
+        responseData = await response.json();
+      } else if (
+        contentType.includes("text/plain") ||
+        contentType.includes("text/html")
+      ) {
+        responseData = await response.text();
+      }
     } else {
       responseData = await response.text();
     }
