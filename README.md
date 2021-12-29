@@ -2,7 +2,7 @@
 
 The [HTWG App](https://github.com/htwg-app/htwg-app-front) connects to [the backend](https://github.com/htwg-app/htwg-app-back) which is deployed on `Heroku`.
 
-[![DeepScan grade](https://deepscan.io/api/teams/16386/projects/19651/branches/513388/badge/grade.svg)](https://deepscan.io/dashboard#view=project&tid=16386&pid=19651&bid=513388)
+[![DeepScan grade](https://deepscan.io/api/teams/16386/projects/19652/branches/513389/badge/grade.svg)](https://deepscan.io/dashboard#view=project&tid=16386&pid=19652&bid=513389)
 
 ## 1. Installation
 
