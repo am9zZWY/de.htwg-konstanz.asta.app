@@ -11,7 +11,7 @@
   "dependencies": {
     "core-js": "^3.20.1",
     "register-service-worker": "^1.7.1",
-    "tsparticles": "^1.37.6",
+    "tsparticles": "^1.38.0",
     "vue": "^3.2.26",
     "vue-router": "^4.0.12",
     "vuex": "^4.0.0-0"
