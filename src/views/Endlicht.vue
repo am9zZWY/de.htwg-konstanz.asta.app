@@ -1,11 +1,11 @@
 <template>
   <tile-group :status="status" tile-title="Endlicht">
     <tile tile-title="Endlicht Preise">
-      <ul class="tile-list">
+      <ol class="tile-list" aria-label="Endlicht Angebote">
         <li v-for="(item, index_item) in items" :key="index_item">
           {{ item.name }}: {{ item.price }}
         </li>
-      </ul>
+      </ol>
       <div class="left">* Auch Laktosefrei</div>
       <div class="left">** Pfand 1€</div>
       <div class="left">*** Pfand 0,25€</div>

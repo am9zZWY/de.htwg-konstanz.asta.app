@@ -1,6 +1,10 @@
 <template>
   <nav class="nav">
-    <router-link class="big-link important-text" to="Home"
+    <router-link
+      class="big-link important-text"
+      to="Home"
+      aria-roledescription="Zur Startseite zu gelangen"
+      aria-label="Startseite"
       >HTWG App</router-link
     >
   </nav>

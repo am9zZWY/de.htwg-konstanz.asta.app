@@ -1,10 +1,17 @@
 <template>
   <tile tile-title="Immatrikulations Bescheinigung" is-inverted>
-    <button :class="['button', { disabled: wait }]" @click="download">
+    <button
+      :class="['button', { disabled: wait }]"
+      @click="download"
+      :aria-busy="wait"
+      :aria-disabled="wait"
+      aria-label="Immatrikulationsbescheinigung herunterladen"
+      role="button"
+    >
       <template v-if="wait && status === 0"> Bitte warten ...</template>
       <template v-else-if="status !== 0 && status !== 200"
-        >Ein Fehler ist aufgetreten</template
-      >
+        >Ein Fehler ist aufgetreten
+      </template>
       <template v-else>Herunterladen</template>
     </button>
   </tile>

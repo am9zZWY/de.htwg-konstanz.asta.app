@@ -1,6 +1,6 @@
 <template>
   <div>
-    <button class="button dark-bg" @click="changeOrder">
+    <button class="button dark-bg" role="button" @click="changeOrder">
       Sortierung ändern
     </button>
   </div>

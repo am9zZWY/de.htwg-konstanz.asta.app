@@ -8,6 +8,8 @@
       { 'warning-tile': error || isWarning },
     ]"
     :to="tileRouteTo"
+    :aria-label="`Kachel ${tileTitle}`"
+    :tabindex="tileRouteTo !== '' ? '0' : '-1'"
   >
     <div class="tile-wrapper">
       <template v-if="!error && !isWarning">

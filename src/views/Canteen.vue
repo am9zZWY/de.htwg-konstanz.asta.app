@@ -1,8 +1,24 @@
 <template>
   <div>
     <h1 class="">{{ weekday }}</h1>
-    <button class="button" @click="changeDay(-1)">Vorheriger Tag</button>
-    <button class="button" @click="changeDay(1)">Nächster Tag</button>
+    <button
+      class="button"
+      @click="changeDay(-1)"
+      role="button"
+      aria-label="Vorheriger tag"
+      tabindex="0"
+    >
+      Vorheriger Tag
+    </button>
+    <button
+      class="button"
+      @click="changeDay(1)"
+      role="button"
+      aria-label="Nächster Tag"
+      tabindex="0"
+    >
+      Nächster Tag
+    </button>
   </div>
   <tile-group :status="status">
     <tile
@@ -10,6 +26,7 @@
       :key="foodIndex"
       :tile-title="`${item.category} | ${item.price[0]}€`"
       class="food"
+      tabindex="-1"
     >
       {{ item.title }}
     </tile>
@@ -18,13 +35,14 @@
 
 <script lang="ts">
 import TileGroup from "@/components/tiles/TileGroup.vue";
+import Tile from "@/components/tiles/Tile.vue";
 import { get } from "@/helpers/fetchData";
 import { computed, onMounted, Ref, ref } from "vue";
 import { nullOrUndefined } from "@/helpers/checks";
 
 export default {
   name: "Mensa",
-  components: { TileGroup },
+  components: { TileGroup, Tile },
   setup() {
     const allFood: any = ref({});
     const status: Ref<number> = ref(0);
