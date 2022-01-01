@@ -1,6 +1,9 @@
 import { nullOrUndefined } from "@/helpers/checks";
 
-const defaultAddress: string = "https://htwg-app-back.herokuapp.com/";
+const defaultAddress: string =
+  process.env.NODE_ENV === "development"
+    ? "http://localhost:8000"
+    : "https://htwg-app-back.herokuapp.com/";
 
 /**
  * @description Maps http_status_code to a string
