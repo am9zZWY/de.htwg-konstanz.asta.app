@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "3cf4476923ecf2ba80da",
+    "revision": "b8a2e8434008a307bff9",
     "url": "/htwg-app-front/css/app.c3300e60.css"
   },
   {
@@ -20,7 +20,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/htwg-app-front/img/playstore.png"
   },
   {
-    "revision": "92c6bdb9ac7cd73b2a4ab79bc60a6831",
+    "revision": "896215756d9624dfe98295958a246696",
     "url": "/htwg-app-front/index.html"
   },
   {
@@ -28,8 +28,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/htwg-app-front/js/about.b9fe5b8c.js"
   },
   {
-    "revision": "3cf4476923ecf2ba80da",
-    "url": "/htwg-app-front/js/app.2de029e7.js"
+    "revision": "b8a2e8434008a307bff9",
+    "url": "/htwg-app-front/js/app.7bfe08c4.js"
   },
   {
     "revision": "59027fd4128c689aaf61",
@@ -40,12 +40,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/htwg-app-front/js/chunk-vendors.08030873.js"
   },
   {
-    "revision": "91844216deb5f5d574b5",
-    "url": "/htwg-app-front/js/endlicht.e440aa65.js"
+    "revision": "f99bf572eb6c9322906f",
+    "url": "/htwg-app-front/js/endlicht.9a67c0e7.js"
   },
   {
-    "revision": "2df2231898762fa84dca",
-    "url": "/htwg-app-front/js/grades.44f7a986.js"
+    "revision": "a6a179e33189a4e893c8",
+    "url": "/htwg-app-front/js/grades.89d6cc3a.js"
   },
   {
     "revision": "ad55920d039d36636e74",
