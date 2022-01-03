@@ -4,7 +4,8 @@
       <table id="timetable" aria-label="Öffnungszeiten der Bibliothek">
         <tr v-for="(day, index) in times" :key="dayNames[index]">
           <th scope="row">{{ dayNames[index] }}</th>
-          <td id="openingTimes">{{ day[0] }} - {{ day[1] }}</td>
+          <td v-if="day" id="openingTimes">{{ day[0] }} - {{ day[1] }}</td>
+          <td v-else>Geschlossen</td>
         </tr>
       </table>
     </tile>
