@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/htwg-app-front/precache-manifest.181f935aaee0198d971b4f721cd8371b.js"
+  "/htwg-app-front/precache-manifest.e7163826fe8b19d1070197533bcf635b.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "htwg-app-front"});
