@@ -20,7 +20,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/htwg-app-front/img/playstore.png"
   },
   {
-    "revision": "cd79649117622cf009b8288733e260ee",
+    "revision": "bca805d3ec7bed046b0045249a5efc0d",
     "url": "/htwg-app-front/index.html"
   },
   {
@@ -36,8 +36,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/htwg-app-front/js/campus-plan.0fd39dc8.js"
   },
   {
-    "revision": "7e2f72ccde4d37950195",
-    "url": "/htwg-app-front/js/chunk-vendors.5f09d96e.js"
+    "revision": "b79dc19f27e15442bc76",
+    "url": "/htwg-app-front/js/chunk-vendors.16f556e7.js"
   },
   {
     "revision": "5484bab07b155afb4ed6",
