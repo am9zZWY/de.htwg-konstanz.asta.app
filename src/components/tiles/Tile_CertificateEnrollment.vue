@@ -1,5 +1,5 @@
 <template>
-  <tile tile-title="Immatrikulations Bescheinigung" is-inverted>
+  <tile tile-title="Immatrikulationsbescheinigung" is-inverted>
     <button
       :class="['button', { disabled: wait }]"
       @click="download"
@@ -24,7 +24,7 @@ import { computed, ref } from "vue";
 import { raw_post } from "@/helpers/fetchData";
 
 export default {
-  name: "TileImmatrikulationsBescheinigung",
+  name: "TileCertificateEnrollment",
   components: { Tile },
   setup() {
     const store = useStore();
@@ -56,7 +56,7 @@ export default {
             a.remove();
           });
         } else {
-          // error e.g. not logged in
+          /* error e.g. not logged in */
           status.value = -1;
           wait.value = false;
         }

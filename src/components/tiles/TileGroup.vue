@@ -9,9 +9,11 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import Tile from "@/components/tiles/Tile";
 export default {
   name: "TileGroup",
+  components: { Tile },
   props: {
     status: {
       type: Number,

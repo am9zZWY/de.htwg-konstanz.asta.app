@@ -47,7 +47,7 @@
   </component>
 </template>
 
-<script>
+<script lang="ts">
 import { statusToString } from "@/helpers/fetchData";
 
 export default {

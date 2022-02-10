@@ -9,11 +9,13 @@
   </tile>
 </template>
 
-<script>
-import { weekday, formatDate } from "@/helpers/dateHelper.ts";
+<script lang="ts">
+import { dayAsWord, formatDate } from "@/helpers/dateHelper.ts";
+import Tile from "@/components/tiles/Tile.vue";
 
 export default {
-  name: "TileTermine",
+  name: "TileUniversityEvents",
+  components: { Tile },
   computed: {
     today: function () {
       return new Date();
@@ -22,7 +24,7 @@ export default {
       return formatDate(this.today);
     },
     weekday: function () {
-      return weekday(this.today);
+      return dayAsWord(this.today);
     },
   },
 };

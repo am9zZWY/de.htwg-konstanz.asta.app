@@ -10,9 +10,11 @@
 
 <script>
 import { mapState } from "vuex";
+import Tile from "@/components/tiles/Tile";
 
 export default {
   name: "TileLogin",
+  components: { Tile },
   computed: {
     ...mapState(["username"]),
     isLoggedIn: function () {

@@ -15,9 +15,11 @@
 import { onMounted, ref, watchEffect } from "vue";
 import get_content_via_post from "@/helpers/post";
 import { useStore } from "vuex";
+import Tile from "@/components/tiles/Tile.vue";
 
 export default {
-  name: "Account",
+  name: "TilePrinterAccount",
+  components: { Tile },
   setup() {
     const druckerGuthaben = ref("");
     const status = ref(0);
