@@ -1,11 +1,9 @@
 <template>
-  <div class="tile-group">
-    <tile is-inverted :status="status">
-      <div id="termine" class="termine">
-        <div v-html="html" />
-      </div>
-    </tile>
-  </div>
+  <tile is-inverted :status="status">
+    <div id="termine" class="termine">
+      <div v-html="html" />
+    </div>
+  </tile>
 </template>
 
 <script lang="ts">
@@ -17,14 +15,8 @@ import { weekdays } from "@/helpers/dateHelper";
 export default defineComponent({
   name: "View_UniversityEvents",
   components: { Tile },
-  data() {
-    return {
-      html: "",
-      status: 0,
-    };
-  },
   setup() {
-    const times: any = ref([]);
+    const html: any = ref("");
     const status: Ref<number> = ref(0);
 
     const fixLinks = () => {
@@ -43,14 +35,16 @@ export default defineComponent({
     const getUniversityEvents = async () => {
       const result = await get("?termine");
       status.value = result.status;
-      times.value = result.content.times;
+      html.value = result.content;
       fixLinks();
     };
 
     onMounted(getUniversityEvents);
+
     return {
       weekdays,
-      times,
+      html,
+      status,
     };
   },
 });
