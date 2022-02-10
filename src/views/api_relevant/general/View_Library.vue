@@ -33,10 +33,10 @@
 <script lang="ts">
 import { get } from "@/helpers/fetchData";
 import Tile from "@/components/tiles/Tile.vue";
-import { onMounted, Ref, ref } from "vue";
+import { defineComponent, onMounted, Ref, ref } from "vue";
 import { weekdays } from "@/helpers/dateHelper";
 
-export default {
+export default defineComponent({
   name: "View_Library",
   components: { Tile },
   setup() {
@@ -58,7 +58,7 @@ export default {
       times,
     };
   },
-};
+});
 </script>
 
 <style scoped>

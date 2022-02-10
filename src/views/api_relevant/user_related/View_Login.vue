@@ -31,11 +31,11 @@
 
 <script lang="ts">
 import { useStore } from "vuex";
-import { ref } from "vue";
+import { defineComponent, ref } from "vue";
 import { useRouter } from "vue-router";
 import Tile from "@/components/tiles/Tile.vue";
 
-export default {
+export default defineComponent({
   name: "View_Login",
   components: { Tile },
   setup() {
@@ -62,5 +62,5 @@ export default {
       saveCredentials,
     };
   },
-};
+});
 </script>

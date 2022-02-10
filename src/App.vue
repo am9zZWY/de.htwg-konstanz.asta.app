@@ -17,14 +17,15 @@
 
 <script lang="ts">
 import { useStore } from "vuex";
+import { defineComponent } from "vue";
 
-export default {
+export default defineComponent({
   name: "App",
   setup() {
     const store = useStore();
     store.commit("getCredentials");
   },
-};
+});
 </script>
 
 <style lang="scss" src="./styles/main.scss" />

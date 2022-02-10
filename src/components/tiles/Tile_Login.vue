@@ -11,8 +11,9 @@
 <script>
 import { mapState } from "vuex";
 import Tile from "@/components/tiles/Tile";
+import { defineComponent } from "vue";
 
-export default {
+export default defineComponent({
   name: "TileLogin",
   components: { Tile },
   computed: {
@@ -30,5 +31,5 @@ export default {
         : "Logge dich ein, um Dienste des Rechenzentrums zu verwenden";
     },
   },
-};
+});
 </script>

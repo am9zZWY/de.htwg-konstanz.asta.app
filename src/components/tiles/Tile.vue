@@ -49,8 +49,9 @@
 
 <script lang="ts">
 import { statusToString } from "@/helpers/fetchData";
+import { computed, defineComponent, toRefs } from "vue";
 
-export default {
+export default defineComponent({
   name: "Tile",
   props: {
     tileTitle: {
@@ -98,13 +99,14 @@ export default {
       default: 200,
     },
   },
-  computed: {
-    error: function () {
-      return this.status !== 200;
-    },
-    errorMessage: function () {
-      return statusToString(this.status);
-    },
+  setup(props: { status: number }) {
+    const { status } = toRefs(props);
+    const error = computed(() => status.value !== 200);
+    const errorMessage = computed(() => statusToString(status.value));
+    return {
+      error,
+      errorMessage,
+    };
   },
-};
+});
 </script>

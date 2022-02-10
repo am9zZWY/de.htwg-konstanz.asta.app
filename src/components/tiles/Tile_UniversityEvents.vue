@@ -10,22 +10,21 @@
 </template>
 
 <script lang="ts">
-import { dayAsWord, formatDate } from "@/helpers/dateHelper.ts";
+import { dayAsWord, formatDate } from "@/helpers/dateHelper";
 import Tile from "@/components/tiles/Tile.vue";
+import { computed, defineComponent, ref } from "vue";
 
-export default {
+export default defineComponent({
   name: "TileUniversityEvents",
   components: { Tile },
-  computed: {
-    today: function () {
-      return new Date();
-    },
-    date: function () {
-      return formatDate(this.today);
-    },
-    weekday: function () {
-      return dayAsWord(this.today);
-    },
+  setup() {
+    const today = ref(new Date());
+    const date = computed(() => formatDate(today.value));
+    const weekday = computed(() => dayAsWord(today.value));
+    return {
+      date,
+      weekday,
+    };
   },
-};
+});
 </script>

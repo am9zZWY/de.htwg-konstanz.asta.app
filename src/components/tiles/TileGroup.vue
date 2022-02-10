@@ -10,8 +10,9 @@
 </template>
 
 <script lang="ts">
-import Tile from "@/components/tiles/Tile";
-export default {
+import Tile from "@/components/tiles/Tile.vue";
+import { computed, defineComponent, toRefs } from "vue";
+export default defineComponent({
   name: "TileGroup",
   components: { Tile },
   props: {
@@ -26,10 +27,12 @@ export default {
       default: "",
     },
   },
-  computed: {
-    error: function () {
-      return this.status !== 200;
-    },
+  setup(props: { status: number }) {
+    const { status } = toRefs(props);
+    const error = computed(() => status.value !== 200);
+    return {
+      error,
+    };
   },
-};
+});
 </script>

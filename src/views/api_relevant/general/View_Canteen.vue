@@ -41,11 +41,11 @@
 import TileGroup from "@/components/tiles/TileGroup.vue";
 import Tile from "@/components/tiles/Tile.vue";
 import { get } from "@/helpers/fetchData";
-import { computed, onMounted, Ref, ref } from "vue";
+import { computed, defineComponent, onMounted, Ref, ref } from "vue";
 import { nullOrUndefined } from "@/helpers/checks";
 import { dateFromString, dayAsWord } from "@/helpers/dateHelper";
 
-export default {
+export default defineComponent({
   name: "View_Canteen",
   components: { TileGroup, Tile },
   setup() {
@@ -93,5 +93,5 @@ export default {
       changeDay,
     };
   },
-};
+});
 </script>

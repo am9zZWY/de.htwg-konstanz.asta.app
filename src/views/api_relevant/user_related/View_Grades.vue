@@ -41,13 +41,20 @@
 
 <script lang="ts">
 import TileGroup from "@/components/tiles/TileGroup.vue";
-import { computed, onMounted, Ref, ref, watchEffect } from "vue";
+import {
+  computed,
+  defineComponent,
+  onMounted,
+  Ref,
+  ref,
+  watchEffect,
+} from "vue";
 import { nullOrUndefined } from "@/helpers/checks";
 import get_content_via_post from "@/helpers/post";
 import { useStore } from "vuex";
 import Tile from "@/components/tiles/Tile.vue";
 
-export default {
+export default defineComponent({
   name: "View_Grades",
   components: { Tile, TileGroup },
   setup() {
@@ -121,5 +128,5 @@ export default {
       cleanString,
     };
   },
-};
+});
 </script>

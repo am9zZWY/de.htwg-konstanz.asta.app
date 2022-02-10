@@ -9,12 +9,12 @@
 </template>
 
 <script lang="ts">
-import { onMounted, ref, watchEffect } from "vue";
+import { defineComponent, onMounted, ref, watchEffect } from "vue";
 import get_content_via_post from "@/helpers/post";
 import { useStore } from "vuex";
 import Tile from "@/components/tiles/Tile.vue";
 
-export default {
+export default defineComponent({
   name: "View_Timetable",
   components: { Tile },
   setup() {
@@ -37,5 +37,5 @@ export default {
       timetable,
     };
   },
-};
+});
 </script>

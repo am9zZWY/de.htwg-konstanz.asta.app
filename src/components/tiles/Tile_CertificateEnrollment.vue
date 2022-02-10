@@ -20,10 +20,10 @@
 <script lang="ts">
 import Tile from "@/components/tiles/Tile.vue";
 import { useStore } from "vuex";
-import { computed, ref } from "vue";
+import { computed, defineComponent, ref } from "vue";
 import { raw_post } from "@/helpers/fetchData";
 
-export default {
+export default defineComponent({
   name: "TileCertificateEnrollment",
   components: { Tile },
   setup() {
@@ -68,5 +68,5 @@ export default {
       download,
     };
   },
-};
+});
 </script>

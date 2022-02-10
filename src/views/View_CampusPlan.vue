@@ -38,6 +38,7 @@
 <script lang="ts">
 import Tile from "@/components/tiles/Tile.vue";
 import { defineComponent } from "vue";
+
 export default defineComponent({
   name: "View_CampusPlan",
   components: { Tile },

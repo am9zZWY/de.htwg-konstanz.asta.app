@@ -19,7 +19,7 @@
       tile-icon="ri-battery-low-line"
       tile-subtitle="Überarbeite dich nicht. Versuche dir die Arbeit aufzuteilen."
       tile-title="Achte auf dich!"
-    ></tile>
+    />
     <tile is-inverted tile-title="Dir geht es nicht gut?">
       <ul class="tile-list">
         <li>
@@ -48,8 +48,11 @@
 <script lang="ts">
 import Tile from "@/components/tiles/Tile.vue";
 import { defineComponent } from "vue";
+
 export default defineComponent({
   name: "View_Health",
-  components: { Tile },
+  components: {
+    Tile,
+  },
 });
 </script>

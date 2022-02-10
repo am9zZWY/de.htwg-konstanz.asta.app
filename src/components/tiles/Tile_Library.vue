@@ -13,10 +13,10 @@
 
 <script lang="ts">
 import { get } from "@/helpers/fetchData";
-import { onMounted, Ref, ref } from "vue";
+import { defineComponent, onMounted, Ref, ref } from "vue";
 import Tile from "@/components/tiles/Tile.vue";
 
-export default {
+export default defineComponent({
   name: "TileLibrary",
   components: { Tile },
   setup() {
@@ -37,5 +37,5 @@ export default {
       fillRate,
     };
   },
-};
+});
 </script>

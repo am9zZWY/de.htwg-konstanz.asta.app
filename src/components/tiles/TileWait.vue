@@ -1,10 +1,11 @@
 <template>
-  <tile tile-title="Bitte kurz warten." />
+  <tile tile-title="Bitte warte kurz." />
 </template>
 
 <script lang="ts">
 import Tile from "@/components/tiles/Tile.vue";
-export default {
+import { defineComponent } from "vue";
+export default defineComponent({
   components: { Tile },
-};
+});
 </script>

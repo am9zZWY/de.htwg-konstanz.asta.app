@@ -20,34 +20,37 @@
 import { get } from "@/helpers/fetchData";
 import TileGroup from "@/components/tiles/TileGroup.vue";
 import Tile from "@/components/tiles/Tile.vue";
+import { defineComponent, onMounted, Ref, ref } from "vue";
+import { weekdays } from "@/helpers/dateHelper";
 
-export default {
+export default defineComponent({
   name: "View_Endlicht",
   components: { Tile, TileGroup },
-  data() {
+  setup() {
+    const items: any = ref([]);
+    const times: any = ref("");
+    const status: Ref<number> = ref(0);
+
+    const getPrices = async () => {
+      const result = await get("?endlicht&reqtype=preise");
+      status.value = result.status;
+      items.value = result.content.times;
+    };
+
+    const getTimes = async () => {
+      const result = await get("?endlicht&reqtype=zeiten");
+      status.value = result.status;
+      times.value = result.content.times;
+    };
+
+    onMounted(getTimes);
+    onMounted(getPrices);
+
     return {
-      items: [],
-      times: "",
-      status: 0,
+      status,
+      weekdays,
+      times,
     };
   },
-  methods: {
-    getPrices: function () {
-      get("?endlicht&reqtype=preise").then(({ content, status }) => {
-        this.status = status;
-        this.items = content;
-      });
-    },
-    getTimes: function () {
-      get("?endlicht&reqtype=zeiten").then(({ content, status }) => {
-        this.status = status;
-        this.times = content;
-      });
-    },
-  },
-  mounted() {
-    this.getPrices();
-    this.getTimes();
-  },
-};
+});
 </script>
