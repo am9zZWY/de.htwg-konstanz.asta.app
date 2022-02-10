@@ -1,8 +1,10 @@
 <template>
   <div>
-    <h1 class="">{{ weekday }}</h1>
+    <h1 class="">{{ weekdayAsWord }} {{ weekday }}</h1>
     <button
       class="button"
+      @keydown.right="changeDay(1)"
+      @keydown.left="changeDay(-1)"
       @click="changeDay(-1)"
       role="button"
       aria-label="Vorheriger tag"
@@ -12,6 +14,8 @@
     </button>
     <button
       class="button"
+      @keydown.right="changeDay(1)"
+      @keydown.left="changeDay(-1)"
       @click="changeDay(1)"
       role="button"
       aria-label="Nächster Tag"
@@ -39,9 +43,10 @@ import Tile from "@/components/tiles/Tile.vue";
 import { get } from "@/helpers/fetchData";
 import { computed, onMounted, Ref, ref } from "vue";
 import { nullOrUndefined } from "@/helpers/checks";
+import { dateFromString, dayAsWord } from "@/helpers/dateHelper";
 
 export default {
-  name: "Mensa",
+  name: "View_Canteen",
   components: { TileGroup, Tile },
   setup() {
     const allFood: any = ref({});
@@ -56,6 +61,9 @@ export default {
 
     const weekdays = computed(() => Object.keys(allFood.value));
     const weekday = computed(() => weekdays.value[index.value]);
+    const weekdayAsWord = computed(() =>
+      dayAsWord(dateFromString(weekday.value))
+    );
 
     const food = computed(() => {
       if (nullOrUndefined(allFood.value) || nullOrUndefined(weekday.value)) {
@@ -65,6 +73,9 @@ export default {
     });
 
     const changeDay = (direction: number) => {
+      if (status.value !== 200) {
+        return;
+      }
       const days = weekdays.value.length;
       index.value =
         direction === 1
@@ -77,6 +88,7 @@ export default {
     return {
       food,
       weekday,
+      weekdayAsWord,
       status,
       changeDay,
     };

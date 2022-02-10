@@ -23,21 +23,25 @@
         href="https://www.github.com/htwg-app"
         rel="nofollow"
         target="_blank"
-        >GitHub <i class="ri-github-fill"
+        >GitHub <em class="ri-github-fill"
       /></a>
     </tile>
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import Tile from "@/components/tiles/Tile.vue";
+import { defineComponent } from "vue";
+
 const contributors = require("@/assets/contributors.json");
 
-export default {
-  name: "About",
+export default defineComponent({
+  name: "View_About",
+  components: { Tile },
   data() {
     return {
       contributors,
     };
   },
-};
+});
 </script>

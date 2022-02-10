@@ -12,9 +12,11 @@
 import { onMounted, ref, watchEffect } from "vue";
 import get_content_via_post from "@/helpers/post";
 import { useStore } from "vuex";
+import Tile from "@/components/tiles/Tile.vue";
 
 export default {
-  name: "Timetable",
+  name: "View_Timetable",
+  components: { Tile },
   setup() {
     const timetable = ref("");
     const status = ref(0);

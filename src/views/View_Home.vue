@@ -10,7 +10,7 @@
       tile-route-to="Timetable"
       tile-title="Stundenplan"
     />
-    <tile-immatrikulations-bescheinigung />
+    <tile-certificate-enrollment />
     <tile
       is-inverted
       tile-icon="ri-mental-health-line"
@@ -27,9 +27,9 @@
       tile-title="Noten"
       tile-subtitle="Eine Übersicht über deine bisherigen Leistungen"
     />
-    <tile-drucker-konto />
+    <tile-printer-account />
     <tile-library />
-    <tile-termine />
+    <tile-university-events />
     <tile
       tile-icon="ri-cup-line"
       tile-route-to="Endlicht"
@@ -40,21 +40,23 @@
   </div>
 </template>
 
-<script>
-import TileDruckerKonto from "@/components/tiles/TileDruckerKonto.vue";
-import TileLogin from "@/components/tiles/TileLogin.vue";
-import TileTermine from "@/components/tiles/TileTermine.vue";
-import TileLibrary from "@/components/tiles/TileLibrary.vue";
-import TileImmatrikulationsBescheinigung from "@/components/tiles/TileImmatrikulationsBescheinigung";
+<script lang="ts">
+import TileLogin from "@/components/tiles/Tile_Login.vue";
+import TileLibrary from "@/components/tiles/Tile_Library.vue";
+import Tile from "@/components/tiles/Tile";
+import TileCertificateEnrollment from "@/components/tiles/Tile_CertificateEnrollment";
+import TilePrinterAccount from "@/components/tiles/Tile_PrinterAccount";
+import TileUniversityEvents from "@/components/tiles/Tile_UniversityEvents";
 
 export default {
-  name: "Home",
+  name: "View_Home",
   components: {
-    TileImmatrikulationsBescheinigung,
-    TileDruckerKonto,
+    TileUniversityEvents,
+    TilePrinterAccount,
+    TileCertificateEnrollment,
+    Tile,
     TileLibrary,
     TileLogin,
-    TileTermine,
   },
 };
 </script>

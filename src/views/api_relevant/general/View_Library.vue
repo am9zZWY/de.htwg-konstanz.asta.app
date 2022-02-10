@@ -2,8 +2,8 @@
   <div class="tile-group">
     <tile tile-title="Öffnungszeiten">
       <table id="timetable" aria-label="Öffnungszeiten der Bibliothek">
-        <tr v-for="(day, index) in times" :key="dayNames[index]">
-          <th scope="row">{{ dayNames[index] }}</th>
+        <tr v-for="(day, index) in times" :key="weekdays[index]">
+          <th scope="row">{{ weekdays[index] }}</th>
           <td v-if="day" id="openingTimes">{{ day[0] }} - {{ day[1] }}</td>
           <td v-else>Geschlossen</td>
         </tr>
@@ -30,37 +30,33 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { get } from "@/helpers/fetchData";
+import Tile from "@/components/tiles/Tile.vue";
+import { onMounted, Ref, ref } from "vue";
+import { weekdays } from "@/helpers/dateHelper";
 
 export default {
-  name: "Library",
-  data() {
-    return {
-      dayNames: [
-        "Montag",
-        "Dienstag",
-        "Mittwoch",
-        "Donnerstag",
-        "Freitag",
-        "Samstag",
-        "Sonntag",
-      ],
-      times: [],
-    };
-  },
-  methods: {
-    fetchTimetable: async function () {
-      get(
+  name: "View_Library",
+  components: { Tile },
+  setup() {
+    const times: any = ref([]);
+    const status: Ref<number> = ref(0);
+
+    const getTimetable = async () => {
+      const result = await get(
         "",
         "https://webapi.affluences.com/api/timetable?token=wWAjgowjn7iD85&week_offset=0&index=0"
-      ).then(({ content }) => {
-        this.times = content.times;
-      });
-    },
-  },
-  mounted() {
-    this.fetchTimetable();
+      );
+      status.value = result.status;
+      times.value = result.content.times;
+    };
+
+    onMounted(getTimetable);
+    return {
+      weekdays,
+      times,
+    };
   },
 };
 </script>

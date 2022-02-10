@@ -16,13 +16,14 @@
   </tile-group>
 </template>
 
-<script>
+<script lang="ts">
 import { get } from "@/helpers/fetchData";
-import TileGroup from "@/components/tiles/TileGroup";
+import TileGroup from "@/components/tiles/TileGroup.vue";
+import Tile from "@/components/tiles/Tile.vue";
 
 export default {
-  name: "Endlicht",
-  components: { TileGroup },
+  name: "View_Endlicht",
+  components: { Tile, TileGroup },
   data() {
     return {
       items: [],

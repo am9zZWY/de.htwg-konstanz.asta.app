@@ -8,11 +8,13 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { get } from "@/helpers/fetchData";
+import Tile from "@/components/tiles/Tile.vue";
 
 export default {
-  name: "Termine",
+  name: "View_UniversityEvents",
+  components: { Tile },
   data() {
     return {
       html: "",
@@ -25,6 +27,9 @@ export default {
      */
     fixLinks: function () {
       const termine = document.getElementById("termine");
+      if (termine === null) {
+        return;
+      }
       let anchors = Array.from(termine.getElementsByTagName("a"));
       anchors.forEach((a) => {
         a.href = "https://www.htwg-konstanz.de" + a.pathname;
@@ -34,6 +39,7 @@ export default {
   },
   mounted() {
     get("?termine")
+      .catch(() => console.log("Ein Fehler ist aufgetreten"))
       .then(({ content, status }) => {
         this.html = content;
         this.status = status;
