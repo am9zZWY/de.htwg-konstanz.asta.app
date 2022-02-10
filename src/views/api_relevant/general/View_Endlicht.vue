@@ -1,6 +1,6 @@
 <template>
-  <tile-group :status="status" tile-title="Endlicht">
-    <tile tile-title="Endlicht Preise">
+  <tile-group tile-title="Endlicht">
+    <tile tile-title="Endlicht Preise" :status="statusItems">
       <ol class="tile-list" aria-label="Endlicht Angebote">
         <li v-for="(item, index_item) in items" :key="index_item">
           {{ item.name }}: {{ item.price }}
@@ -10,7 +10,11 @@
       <div class="left">** Pfand 1€</div>
       <div class="left">*** Pfand 0,25€</div>
     </tile>
-    <tile is-inverted tile-title="Endlicht Öffnungszeiten">
+    <tile
+      is-inverted
+      tile-title="Endlicht Öffnungszeiten"
+      :status="statusTimes"
+    >
       <div v-html="times" />
     </tile>
   </tile-group>
@@ -29,27 +33,32 @@ export default defineComponent({
   setup() {
     const items: any = ref([]);
     const times: any = ref("");
-    const status: Ref<number> = ref(0);
+    const statusItems: Ref<number> = ref(0);
+    const statusTimes: Ref<number> = ref(0);
 
     const getPrices = async () => {
       const result = await get("?endlicht&reqtype=preise");
-      status.value = result.status;
-      items.value = result.content.times;
+      statusItems.value = result.status;
+      items.value = result.content;
     };
 
     const getTimes = async () => {
       const result = await get("?endlicht&reqtype=zeiten");
-      status.value = result.status;
-      times.value = result.content.times;
+      statusTimes.value = result.status;
+      times.value = result.content;
     };
 
-    onMounted(getTimes);
-    onMounted(getPrices);
+    onMounted(() => {
+      getPrices();
+      getTimes();
+    });
 
     return {
-      status,
-      weekdays,
+      statusItems,
+      statusTimes,
       times,
+      items,
+      weekdays,
     };
   },
 });
