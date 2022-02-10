@@ -69,7 +69,7 @@ export async function raw_post(
   postBody: string,
   address: string = defaultAddress
 ): Promise<Response> {
-  return await fetch(address, {
+  return fetch(address, {
     method: "POST",
     body: postBody,
   });
@@ -78,7 +78,7 @@ export async function raw_post(
 export async function get(
   args: string,
   address: string = defaultAddress
-): Promise<{ content: string | object; status: number }> {
+): Promise<{ content: any; status: number }> {
   const response = await fetch(address + args);
   return handleResponse(response);
 }
