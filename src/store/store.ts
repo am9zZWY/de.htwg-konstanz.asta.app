@@ -8,7 +8,10 @@ export const store = createStore({
     password: "",
   },
   mutations: {
-    storeCredentials(state, credentials = {}) {
+    storeCredentials(
+      state,
+      credentials: { username: string; password: string }
+    ) {
       const { username, password } = credentials;
       state.username = encrypt_data(username);
       state.password = encrypt_data(password);
@@ -32,6 +35,13 @@ export const store = createStore({
       }
     },
   },
-  actions: {},
+  actions: {
+    storeCredentials(
+      context,
+      credentials: { username: string; password: string }
+    ) {
+      context.dispatch("storeCredentials", credentials);
+    },
+  },
   modules: {},
 });
