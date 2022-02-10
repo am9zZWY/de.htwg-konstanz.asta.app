@@ -1,28 +1,30 @@
 <template>
   <div>
-    <h1 class="">{{ weekdayAsWord }} {{ weekday }}</h1>
-    <button
-      class="button"
-      @keydown.right="changeDay(1)"
-      @keydown.left="changeDay(-1)"
-      @click="changeDay(-1)"
-      role="button"
-      aria-label="Vorheriger tag"
-      tabindex="0"
-    >
-      Vorheriger Tag
-    </button>
-    <button
-      class="button"
-      @keydown.right="changeDay(1)"
-      @keydown.left="changeDay(-1)"
-      @click="changeDay(1)"
-      role="button"
-      aria-label="Nächster Tag"
-      tabindex="0"
-    >
-      Nächster Tag
-    </button>
+    <h1>{{ weekdayAsWord }} {{ weekday }}</h1>
+    <template v-if="food.length > 0">
+      <button
+        class="button"
+        @keydown.right="changeDay(1)"
+        @keydown.left="changeDay(-1)"
+        @click="changeDay(-1)"
+        role="button"
+        aria-label="Vorheriger tag"
+        tabindex="0"
+      >
+        Vorheriger Tag
+      </button>
+      <button
+        class="button"
+        @keydown.right="changeDay(1)"
+        @keydown.left="changeDay(-1)"
+        @click="changeDay(1)"
+        role="button"
+        aria-label="Nächster Tag"
+        tabindex="0"
+      >
+        Nächster Tag
+      </button>
+    </template>
   </div>
   <tile-group :status="status">
     <tile
@@ -66,6 +68,7 @@ export default defineComponent({
     );
 
     const food = computed(() => {
+      /* Return all food of a specific day */
       if (nullOrUndefined(allFood.value) || nullOrUndefined(weekday.value)) {
         return [];
       }
@@ -73,9 +76,12 @@ export default defineComponent({
     });
 
     const changeDay = (direction: number) => {
-      if (status.value !== 200) {
+      /* Return if there is no food */
+      if (food.value.length === 0) {
         return;
       }
+
+      /* Change day by +1 or -1 */
       const days = weekdays.value.length;
       index.value =
         direction === 1
