@@ -1,9 +1,9 @@
-import { dayAsNumber, formatDate, weekday } from "@/helpers/dateHelper";
+import { dayAsNumber, formatDate, dayAsWord } from "@/helpers/dateHelper";
 
 describe("weekday returns weekday from Date as String", () => {
   it("should return Donnerstag", () => {
     const date = new Date(1634808912223); // Thursday, 21.10.21
-    const weekday1 = weekday(date);
+    const weekday1 = dayAsWord(date);
     expect(weekday1).toBe("Donnerstag");
   });
 });

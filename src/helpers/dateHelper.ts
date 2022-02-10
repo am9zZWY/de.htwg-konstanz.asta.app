@@ -1,4 +1,6 @@
-const weekdays = [
+import { nullOrUndefined } from "@/helpers/checks";
+
+export const weekdays = [
   "Montag",
   "Dienstag",
   "Mittwoch",
@@ -14,7 +16,22 @@ const weekdays = [
  * @returns {string}
  */
 export function formatDate(d: Date): string {
+  if (nullOrUndefined(d)) {
+    return "";
+  }
   return `${d.getDate()}.${d.getMonth() + 1}.${d.getFullYear()}`;
+}
+
+/**
+ * Create Date from string in format dd.mm.yyyy
+ * @param s
+ */
+export function dateFromString(s: string): Date | null {
+  if (nullOrUndefined(s)) {
+    return null;
+  }
+  const [day, month, year] = s.split(".");
+  return new Date(parseInt(year), parseInt(month) - 1, parseInt(day));
 }
 
 /**
@@ -22,7 +39,10 @@ export function formatDate(d: Date): string {
  * @param d
  * @returns {string}
  */
-export function weekday(d: Date): string {
+export function dayAsWord(d: Date | null): string {
+  if (nullOrUndefined(d)) {
+    return "";
+  }
   return weekdays[dayAsNumber(d)];
 }
 
