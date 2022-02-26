@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "24e2d0d4eb3462cb0160",
+    "revision": "5ebbed7c16de7638799d",
     "url": "/htwg-app-front/css/app.c3300e60.css"
   },
   {
@@ -20,7 +20,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/htwg-app-front/img/playstore.png"
   },
   {
-    "revision": "0fac285432551dae73317ebf086f28c4",
+    "revision": "66f3174a9f418516470ac87a743371bd",
     "url": "/htwg-app-front/index.html"
   },
   {
@@ -28,24 +28,24 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/htwg-app-front/js/about.d355aefc.js"
   },
   {
-    "revision": "24e2d0d4eb3462cb0160",
-    "url": "/htwg-app-front/js/app.d2c8679a.js"
+    "revision": "5ebbed7c16de7638799d",
+    "url": "/htwg-app-front/js/app.4e93792a.js"
   },
   {
     "revision": "5995fd6d37992e72e9c9",
     "url": "/htwg-app-front/js/campus-plan.05355fed.js"
   },
   {
-    "revision": "bdcb5fadba9ac1082cf8",
-    "url": "/htwg-app-front/js/chunk-vendors.ae59c6bb.js"
+    "revision": "5d09105ccbb51a5c2d2f",
+    "url": "/htwg-app-front/js/chunk-vendors.6cac4fe4.js"
   },
   {
     "revision": "a088c703f7f23e505b33",
     "url": "/htwg-app-front/js/endlicht.20c9a2b2.js"
   },
   {
-    "revision": "cd42a04329a1d2c5ef14",
-    "url": "/htwg-app-front/js/grades.0fae8d72.js"
+    "revision": "612933bb5380c03ec6ef",
+    "url": "/htwg-app-front/js/grades.8d295d17.js"
   },
   {
     "revision": "0a76866852136d6485c4",
