@@ -11,7 +11,7 @@
 
 <script lang="ts">
 import { dayAsWord, formatDate } from "@/helpers/dateHelper";
-import Tile from "@/components/tiles/Tile.vue";
+import Tile from "@/components/tiles/TileComponent.vue";
 import { computed, defineComponent, ref } from "vue";
 
 export default defineComponent({

@@ -10,7 +10,7 @@
 </template>
 
 <script lang="ts">
-import Tile from "@/components/tiles/Tile.vue";
+import Tile from "@/components/tiles/TileComponent.vue";
 import { computed, defineComponent, toRefs } from "vue";
 export default defineComponent({
   name: "TileGroup",

@@ -52,7 +52,7 @@ import { statusToString } from "@/helpers/fetchData";
 import { computed, defineComponent, toRefs } from "vue";
 
 export default defineComponent({
-  name: "Tile",
+  name: "TileComponent",
   props: {
     tileTitle: {
       type: String,

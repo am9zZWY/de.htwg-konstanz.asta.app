@@ -33,7 +33,7 @@
 import { useStore } from "vuex";
 import { defineComponent, ref } from "vue";
 import { useRouter } from "vue-router";
-import Tile from "@/components/tiles/Tile.vue";
+import Tile from "@/components/tiles/TileComponent.vue";
 
 export default defineComponent({
   name: "View_Login",

@@ -41,7 +41,7 @@
 
 <script lang="ts">
 import TileGroup from "@/components/tiles/TileGroup.vue";
-import Tile from "@/components/tiles/Tile.vue";
+import Tile from "@/components/tiles/TileComponent.vue";
 import { get } from "@/helpers/fetchData";
 import { computed, defineComponent, onMounted, Ref, ref } from "vue";
 import { nullOrUndefined } from "@/helpers/checks";

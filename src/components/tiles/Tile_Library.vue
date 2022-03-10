@@ -14,7 +14,7 @@
 <script lang="ts">
 import { get } from "@/helpers/fetchData";
 import { defineComponent, onMounted, Ref, ref } from "vue";
-import Tile from "@/components/tiles/Tile.vue";
+import Tile from "@/components/tiles/TileComponent.vue";
 
 export default defineComponent({
   name: "TileLibrary",
