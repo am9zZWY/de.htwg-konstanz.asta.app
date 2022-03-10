@@ -26,16 +26,18 @@
       "dom",
       "dom.iterable",
       "scripthost"
-    ]
+    ],
+    "useDefineForClassFields": true,
+    "resolveJsonModule": true
   },
   "include": [
     "src/**/*.ts",
+    "src/**/*.d.ts",
     "src/**/*.tsx",
     "src/**/*.vue",
-    "tests/**/*.ts",
-    "tests/**/*.tsx"
   ],
   "exclude": [
     "node_modules"
-  ]
+  ],
+  "references": [{ "path": "./tsconfig.node.json" }]
 }
