@@ -1,0 +1,52 @@
+@import "colors";
+
+/* Text */
+.important-text {
+  font-size: 42px;
+  font-weight: bolder;
+}
+
+.left {
+  text-align: left;
+}
+
+.white-txt {
+  color: white;
+}
+
+/* Pointers */
+.disabled {
+  pointer-events: none;
+  cursor: default;
+  text-decoration: none;
+  color: black;
+}
+
+.no-pointer {
+  cursor: default;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+/* Backgrounds */
+.dark-bg {
+  background: $dark;
+  color: white !important;
+}
+
+.no-bg {
+  background: none;
+  color: black !important;
+  box-shadow: none;
+}
+
+/* Email */
+
+.email {
+  user-select: none;
+}
+.email::selection, .email::-moz-selection {
+  background: none;
+}
