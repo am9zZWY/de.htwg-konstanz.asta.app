@@ -8,9 +8,9 @@
   />
 </template>
 
-<script>
+<script lang="ts">
 import { mapState } from "vuex";
-import Tile from "@/components/tiles/Tile";
+import Tile from "@/components/tiles/TileComponent.vue";
 import { defineComponent } from "vue";
 
 export default defineComponent({

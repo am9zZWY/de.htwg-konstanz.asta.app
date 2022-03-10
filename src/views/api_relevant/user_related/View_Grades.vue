@@ -52,7 +52,7 @@ import {
 import { nullOrUndefined } from "@/helpers/checks";
 import get_content_via_post from "@/helpers/post";
 import { useStore } from "vuex";
-import Tile from "@/components/tiles/Tile.vue";
+import Tile from "@/components/tiles/TileComponent.vue";
 
 export default defineComponent({
   name: "View_Grades",

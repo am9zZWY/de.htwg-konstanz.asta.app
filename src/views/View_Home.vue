@@ -43,7 +43,7 @@
 <script lang="ts">
 import TileLogin from "@/components/tiles/Tile_Login.vue";
 import TileLibrary from "@/components/tiles/Tile_Library.vue";
-import Tile from "@/components/tiles/Tile.vue";
+import Tile from "@/components/tiles/TileComponent.vue";
 import TileCertificateEnrollment from "@/components/tiles/Tile_CertificateEnrollment.vue";
 import TilePrinterAccount from "@/components/tiles/Tile_PrinterAccount.vue";
 import TileUniversityEvents from "@/components/tiles/Tile_UniversityEvents.vue";

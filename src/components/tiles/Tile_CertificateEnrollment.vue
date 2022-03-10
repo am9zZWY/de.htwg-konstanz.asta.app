@@ -18,7 +18,7 @@
 </template>
 
 <script lang="ts">
-import Tile from "@/components/tiles/Tile.vue";
+import Tile from "@/components/tiles/TileComponent.vue";
 import { useStore } from "vuex";
 import { computed, defineComponent, ref } from "vue";
 import { raw_post } from "@/helpers/fetchData";

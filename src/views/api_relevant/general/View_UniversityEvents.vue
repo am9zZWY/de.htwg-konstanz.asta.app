@@ -8,7 +8,7 @@
 
 <script lang="ts">
 import { get } from "@/helpers/fetchData";
-import Tile from "@/components/tiles/Tile.vue";
+import Tile from "@/components/tiles/TileComponent.vue";
 import { defineComponent, onMounted, Ref, ref } from "vue";
 import { weekdays } from "@/helpers/dateHelper";
 

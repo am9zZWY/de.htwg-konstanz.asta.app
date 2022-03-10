@@ -46,7 +46,7 @@
 </template>
 
 <script lang="ts">
-import Tile from "@/components/tiles/Tile.vue";
+import Tile from "@/components/tiles/TileComponent.vue";
 import { defineComponent } from "vue";
 
 export default defineComponent({
