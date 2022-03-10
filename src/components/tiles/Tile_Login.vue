@@ -9,27 +9,29 @@
 </template>
 
 <script lang="ts">
-import { mapState } from "vuex";
+import { useStore } from "vuex";
 import Tile from "@/components/tiles/TileComponent.vue";
-import { defineComponent } from "vue";
+import { computed, defineComponent } from "vue";
+import { nullOrUndefined } from "@/helpers/checks";
 
 export default defineComponent({
   name: "TileLogin",
   components: { Tile },
-  computed: {
-    ...mapState(["username"]),
-    isLoggedIn: function () {
-      return (
-        this.username !== "" &&
-        this.username !== null &&
-        typeof this.username !== "undefined"
-      );
-    },
-    greeting: function () {
-      return this.isLoggedIn
-        ? `Hallo!`
-        : "Logge dich ein, um Dienste des Rechenzentrums zu verwenden";
-    },
+  setup() {
+    const store = useStore();
+    const username = computed(() => store.state.username);
+    const isLoggedIn = computed(
+      () => username.value !== "" && !nullOrUndefined(username.value)
+    );
+    const greeting = computed(() =>
+      isLoggedIn.value
+        ? "Hallo!"
+        : "Logge dich ein, um Dienste des Rechenzentrums zu verwenden"
+    );
+
+    return {
+      greeting,
+    };
   },
 });
 </script>
