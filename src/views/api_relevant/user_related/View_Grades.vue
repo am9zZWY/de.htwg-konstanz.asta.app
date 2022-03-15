@@ -1,8 +1,10 @@
 <template>
   <div>
-    <button class="button dark-bg" role="button" @click="changeOrder">
-      Sortierung ändern
-    </button>
+    <template v-if="semesters.length > 0">
+      <button class="button dark-bg" role="button" @click="changeOrder">
+        Sortierung ändern
+      </button>
+    </template>
   </div>
   <tile-group :status="status" tile-title="Noten">
     <template v-for="semester in semesters" :key="semester">
