@@ -8,7 +8,7 @@
       aria-label="Immatrikulationsbescheinigung herunterladen"
       role="button"
     >
-      <template v-if="wait && status === 0"> Bitte warten ...</template>
+      <template v-if="wait && status === 0">Bitte warten ...</template>
       <template v-else-if="status !== 0 && status !== 200"
         >Ein Fehler ist aufgetreten
       </template>
@@ -30,8 +30,10 @@ export default defineComponent({
     const store = useStore();
     const wait = ref(false);
     const status = ref(0);
+
     const download = () => {
       wait.value = true;
+      status.value = 0;
       const username = computed(() => store?.state?.username);
       const password = computed(() => store?.state?.password);
 
