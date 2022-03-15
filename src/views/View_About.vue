@@ -32,13 +32,12 @@
 <script lang="ts">
 import Tile from "@/components/tiles/TileComponent.vue";
 import { defineComponent } from "vue";
-
-const contributors = require("@/assets/contributors.json");
+import contributors from "@/assets/contributors.json";
 
 export default defineComponent({
   name: "View_About",
   components: { Tile },
-  data() {
+  setup() {
     return {
       contributors,
     };
