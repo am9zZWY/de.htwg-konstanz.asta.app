@@ -19,7 +19,7 @@
   pointer-events: none;
   cursor: default;
   text-decoration: none;
-  color: black;
+  color: #909090;
 }
 
 .no-pointer {
@@ -28,6 +28,10 @@
 
 .pointer {
   cursor: pointer;
+}
+
+.disable-dbl-tap-zoom {
+  touch-action: manipulation;
 }
 
 /* Backgrounds */
