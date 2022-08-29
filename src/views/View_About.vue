@@ -12,10 +12,6 @@
         </li>
       </ul>
     </tile>
-    <tile is-inverted>
-      Wenn dir diese App gefällt, dann schreibe uns gerne eine E-Mail an:<br />
-      <strong class="email">jo391mue at htwg-konstanz.de</strong>.
-    </tile>
     <tile tile-title="Dieses Projekt ist Open-Source" is-inverted>
       Unter folgendem Link kannst du dir unseren Code anschauen <br /><br />
       <a
