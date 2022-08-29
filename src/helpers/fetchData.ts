@@ -13,6 +13,8 @@ export function statusToString(status: number): string {
   switch (status) {
     case 0:
       return "Daten noch nicht da";
+    case 1:
+      return "Bitte einloggen";
     case 200:
       return "Hat einwandfrei geklappt";
     case 400:
