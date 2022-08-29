@@ -1,10 +1,5 @@
 <template>
-  <tile
-    tile-title="Immatrikulationsbescheinigung"
-    is-inverted
-    :status="status"
-    require-login
-  >
+  <tile tile-title="Immatrikulationsbescheinigung" is-inverted require-login>
     <button
       :class="['button', { disabled: wait }]"
       @click="download"
