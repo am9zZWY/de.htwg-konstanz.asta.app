@@ -4,7 +4,7 @@
       Sortierung ändern
     </button>
   </div>
-  <tile-group :status="status" tile-title="Noten">
+  <tile-group :status="status" require-login tile-title="Noten">
     <template v-for="semester in semesters" :key="semester">
       <tile
         :tile-title="semester"
@@ -65,7 +65,7 @@ export default defineComponent({
       ects: string;
     };
 
-    const order: Ref<number> = ref(1);
+    const order: Ref<number> = ref(-1);
     const grades: Ref<Grade[]> = ref([]);
     const status: Ref<number> = ref(0);
 

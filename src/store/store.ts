@@ -1,11 +1,17 @@
 import { createStore } from "vuex";
 import encrypt_data from "@/helpers/encryptionHelper";
 import { cookieCreator, cookieReader } from "@/helpers/cookieHelper";
+import { nullOrUndefined } from "@/helpers/checks";
 
 export const store = createStore({
   state: {
     username: "",
     password: "",
+  },
+  getters: {
+    isLoggedIn(state) {
+      return state.username !== "" && !nullOrUndefined(state.username);
+    },
   },
   mutations: {
     storeCredentials(

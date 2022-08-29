@@ -1,5 +1,6 @@
 <template>
   <tile
+    require-login
     :status="status"
     big-content
     is-inverted
@@ -7,7 +8,7 @@
     tile-title="Guthaben"
   >
     <em class="ri-printer-line icon" />
-    {{ druckerGuthaben }}
+    {{ tileText }}
   </tile>
 </template>
 
@@ -21,14 +22,14 @@ export default defineComponent({
   name: "TilePrinterAccount",
   components: { Tile },
   setup() {
-    const druckerGuthaben = ref("");
+    const tileText = ref("");
     const status = ref(0);
 
     const store = useStore();
 
     const getDruckerGuthaben = async () => {
       const result = await get_content_via_post("drucker", store);
-      druckerGuthaben.value = result.content.replace(/,/, ".") + "€";
+      tileText.value = result.content.replace(/,/, ".") + "€";
       status.value = result.status;
     };
 
@@ -38,7 +39,7 @@ export default defineComponent({
 
     return {
       status,
-      druckerGuthaben,
+      tileText,
     };
   },
 });

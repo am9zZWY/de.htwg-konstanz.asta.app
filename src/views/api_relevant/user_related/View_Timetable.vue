@@ -1,11 +1,9 @@
 <template>
-  <div>
-    <tile is-inverted :status="status">
-      <div id="termine" class="timetable">
-        <div v-html="timetable" />
-      </div>
-    </tile>
-  </div>
+  <tile is-inverted require-login :status="status">
+    <div id="termine" class="timetable">
+      <div v-html="timetable" />
+    </div>
+  </tile>
 </template>
 
 <script lang="ts">

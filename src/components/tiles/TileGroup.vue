@@ -4,7 +4,11 @@
       <slot></slot>
     </template>
     <template v-else>
-      <tile :tile-subtitle="tileTitle" :status="status" />
+      <tile
+        :tile-subtitle="tileTitle"
+        :require-login="requireLogin"
+        :status="status"
+      />
     </template>
   </div>
 </template>
@@ -12,6 +16,7 @@
 <script lang="ts">
 import Tile from "@/components/tiles/TileComponent.vue";
 import { computed, defineComponent, toRefs } from "vue";
+
 export default defineComponent({
   name: "TileGroup",
   components: { Tile },
@@ -25,6 +30,11 @@ export default defineComponent({
       type: String,
       required: false,
       default: "",
+    },
+    requireLogin: {
+      type: Boolean,
+      required: false,
+      default: false,
     },
   },
   setup(props: { status: number }) {

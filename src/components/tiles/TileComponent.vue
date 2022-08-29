@@ -40,7 +40,7 @@
           {{ errorMessage }}
         </div>
         <div class="tile-subtitle">
-          {{ tileSubtitle }}
+          {{ tileSubtitle || tileTitle }}
         </div>
       </template>
     </div>
@@ -50,6 +50,7 @@
 <script lang="ts">
 import { statusToString } from "@/helpers/fetchData";
 import { computed, defineComponent, toRefs } from "vue";
+import { useStore } from "vuex";
 
 export default defineComponent({
   name: "TileComponent",
@@ -98,11 +99,24 @@ export default defineComponent({
       required: false,
       default: 200,
     },
+    requireLogin: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
   },
-  setup(props: { status: number }) {
-    const { status } = toRefs(props);
+  setup(props: { status: number; requireLogin: boolean }) {
+    const { status, requireLogin } = toRefs(props);
     const error = computed(() => status.value !== 200);
-    const errorMessage = computed(() => statusToString(status.value));
+    const store = useStore();
+    const isLoggedIn = computed(() => store.getters.isLoggedIn);
+    const errorMessage = computed(() => {
+      if (requireLogin.value && !isLoggedIn.value) {
+        return statusToString(1);
+      } else {
+        return statusToString(status.value);
+      }
+    });
     return {
       error,
       errorMessage,

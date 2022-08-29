@@ -1,5 +1,10 @@
 <template>
-  <tile tile-title="Immatrikulationsbescheinigung" is-inverted>
+  <tile
+    tile-title="Immatrikulationsbescheinigung"
+    is-inverted
+    :status="status"
+    require-login
+  >
     <button
       :class="['button', { disabled: wait }]"
       @click="download"
@@ -8,11 +13,7 @@
       aria-label="Immatrikulationsbescheinigung herunterladen"
       role="button"
     >
-      <template v-if="wait && status === 0"> Bitte warten ...</template>
-      <template v-else-if="status !== 0 && status !== 200"
-        >Ein Fehler ist aufgetreten
-      </template>
-      <template v-else>Herunterladen</template>
+      {{ tileText }}
     </button>
   </tile>
 </template>
@@ -62,10 +63,20 @@ export default defineComponent({
         }
       });
     };
+    const tileText = computed(() => {
+      if (wait.value && status.value === 0) {
+        return "Bitte warten ...";
+      } else if (status.value !== 0) {
+        return "Ein Fehler ist aufgetreten";
+      } else {
+        return "Herunterladen";
+      }
+    });
     return {
       wait,
       status,
       download,
+      tileText,
     };
   },
 });
