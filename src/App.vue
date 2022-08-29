@@ -8,7 +8,7 @@
       >HTWG App</router-link
     >
   </nav>
-  <router-view v-slot="{ Component }">
+  <router-view v-slot="{ Component }" class="disable-dbl-tap-zoom">
     <keep-alive>
       <component :is="Component" :key="$route.fullPath" />
     </keep-alive>
