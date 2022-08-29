@@ -3,7 +3,10 @@
 /********************************************************/
 /****************** Navigation ******************/
 .nav {
-  margin: 30px 20px;
+  display: grid;
+  margin: 10px 5px 30px;
+  grid-gap: 10px;
+  justify-content: center;
 }
 
 /********************************************************/
@@ -25,6 +28,10 @@
   margin: 15px !important;
   font-size: 36px;
   font-weight: bolder;
+  display: block;
+  max-width: 20vw;
+  align-self: stretch;
+  overflow: auto;
 }
 
 /********************************************************/
