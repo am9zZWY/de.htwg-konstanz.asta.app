@@ -107,9 +107,11 @@ export default defineComponent({
   },
   setup(props: { status: number; requireLogin: boolean }) {
     const { status, requireLogin } = toRefs(props);
-    const error = computed(() => status.value !== 200);
     const store = useStore();
     const isLoggedIn = computed(() => store.getters.isLoggedIn);
+    const error = computed(
+      () => status.value !== 200 || (requireLogin.value && !isLoggedIn.value)
+    );
     const errorMessage = computed(() => {
       if (requireLogin.value && !isLoggedIn.value) {
         return statusToString(1);
