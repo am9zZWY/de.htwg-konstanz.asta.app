@@ -46,7 +46,7 @@ export const store = createStore({
       context,
       credentials: { username: string; password: string }
     ) {
-      context.dispatch("storeCredentials", credentials);
+      context.commit("storeCredentials", credentials);
     },
   },
   modules: {},

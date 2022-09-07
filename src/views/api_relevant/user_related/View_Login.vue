@@ -22,9 +22,20 @@
           />
         </div>
         <div class="form-group">
-          <button @click="saveCredentials">Einloggen</button>
+          <button aria-label="Login Formular absenden" @click="saveCredentials">
+            Einloggen
+          </button>
         </div>
       </div>
+    </tile>
+    <tile is-inverted>
+      Du kannst deine Anmeldedaten online ändern:
+      <a
+        href="https://login.rz.htwg-konstanz.de/"
+        class="big-link link"
+        target="_blank"
+        >zum RZ
+      </a>
     </tile>
   </div>
 </template>
@@ -46,14 +57,16 @@ export default defineComponent({
 
     const store = useStore();
     const saveCredentials = () => {
-      store.commit("storeCredentials", {
-        username: username.value,
-        password: password.value,
-      });
-      username.value = "";
-      password.value = "";
-
-      router.push({ name: "Home" });
+      store
+        .dispatch("storeCredentials", {
+          username: username.value,
+          password: password.value,
+        })
+        .then(() => {
+          username.value = "";
+          password.value = "";
+          router.push({ name: "Home" });
+        });
     };
 
     return {
