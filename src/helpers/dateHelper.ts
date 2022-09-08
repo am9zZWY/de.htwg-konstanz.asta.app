@@ -19,7 +19,7 @@ export function formatDate(d: Date): string {
   if (nullOrUndefined(d)) {
     return "";
   }
-  return `${d.getDate()}.${d.getMonth() + 1}.${d.getFullYear()}`;
+  return `${d.getDate().toString().padStart(2, "0")}.${(d.getMonth() + 1).toString().padStart(2, "0")}.${d.getFullYear()}`;
 }
 
 /**
@@ -60,4 +60,8 @@ export function dayAsNumber(d: Date, surpassWeekend: boolean = false): number {
     day = 7;
   }
   return day;
+}
+
+export function isWeekend(d: Date): boolean {
+  return d.getDay() === 0 || d.getDay() === 6
 }

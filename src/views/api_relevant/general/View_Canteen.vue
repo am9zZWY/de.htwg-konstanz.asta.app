@@ -43,9 +43,9 @@
 import TileGroup from "@/components/tiles/TileGroup.vue";
 import Tile from "@/components/tiles/TileComponent.vue";
 import { get } from "@/helpers/fetchData";
-import { computed, defineComponent, onMounted, Ref, ref } from "vue";
+import { computed, defineComponent, onMounted, Ref, ref, watch } from "vue";
 import { nullOrUndefined } from "@/helpers/checks";
-import { dateFromString, dayAsWord } from "@/helpers/dateHelper";
+import { dateFromString, dayAsWord, formatDate, isWeekend } from "@/helpers/dateHelper";
 
 export default defineComponent({
   name: "View_Canteen",
@@ -66,6 +66,16 @@ export default defineComponent({
     const weekdayAsWord = computed(() =>
       dayAsWord(dateFromString(weekday.value))
     );
+    const currentDay = computed(() => new Date());
+    const updateIndex = (wds: string[]) => {
+      wds.forEach((wd, idx) => {
+        if (wd === formatDate(currentDay.value) || (isWeekend(currentDay.value) && idx === 5 /* skip weekends */)) {
+
+          index.value = idx;
+        }
+      });
+    };
+    watch(weekdays, (newVal) => updateIndex(newVal));
 
     const food = computed(() => {
       /* Return all food of a specific day */
@@ -94,10 +104,11 @@ export default defineComponent({
     return {
       food,
       weekday,
+      weekdays,
       weekdayAsWord,
       status,
-      changeDay,
+      changeDay
     };
-  },
+  }
 });
 </script>
