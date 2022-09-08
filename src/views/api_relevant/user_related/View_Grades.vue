@@ -1,4 +1,5 @@
 <template>
+  <div class="big-tile-title">{{ allECTS }} ECTS</div>
   <div>
     <button class="button dark-bg" role="button" @click="changeOrder">
       Sortierung ändern
@@ -50,9 +51,9 @@ import {
   watchEffect,
 } from "vue";
 import { nullOrUndefined } from "@/helpers/checks";
-import get_content_via_post from "@/helpers/post";
 import { useStore } from "vuex";
 import Tile from "@/components/tiles/TileComponent.vue";
+import { get_content_via_post } from "@/helpers/post";
 
 export default defineComponent({
   name: "View_Grades",
@@ -79,8 +80,8 @@ export default defineComponent({
 
     const cleanString = (str: string) => str.replace(/(\\n|\\t)/g, "").trim();
 
-    const calcECTS = (grades: Grade[]) =>
-      grades.reduce((ects, grade) => parseInt(grade.ects) + ects, 0);
+    const calcECTS = (gr: Grade[]) =>
+      gr.reduce((ects, grade) => parseInt(grade.ects) + ects, 0);
 
     const changeOrder = () => (order.value *= -1);
 
@@ -119,10 +120,14 @@ export default defineComponent({
     onMounted(getGrades);
     watchEffect(getGrades);
 
+    const allECTS = computed(() => calcECTS(grades.value));
+
     return {
       status,
       semesters,
       gradePerSemester,
+      allECTS,
+      grades,
       changeOrder,
       calcECTS,
       cleanString,
