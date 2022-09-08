@@ -1,5 +1,10 @@
 <template>
-  <tile tile-title="Immatrikulationsbescheinigung" is-inverted require-login>
+  <tile
+    tile-title="Immatrikulations
+                Bescheinigung"
+    is-inverted
+    require-login
+  >
     <button
       :class="['button', { disabled: wait }]"
       @click="download"
@@ -34,7 +39,7 @@ export default defineComponent({
       const body = JSON.stringify({
         username: username.value || "",
         password: password.value || "",
-        reqtype: "immatrikulations_bescheinigung",
+        reqtype: "immatrikulations_bescheinigung"
       });
 
       raw_post(body).then((result) => {
@@ -61,18 +66,21 @@ export default defineComponent({
     const tileText = computed(() => {
       if (wait.value && status.value === 0) {
         return "Bitte warten ...";
+      } else if (status.value === 200) {
+        return "Heruntergeladen";
       } else if (status.value !== 0) {
         return "Ein Fehler ist aufgetreten";
       } else {
         return "Herunterladen";
       }
     });
+
     return {
       wait,
       status,
       download,
-      tileText,
+      tileText
     };
-  },
+  }
 });
 </script>
