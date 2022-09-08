@@ -5,37 +5,36 @@
       tile-route-to="Canteen"
       tile-title="Speiseplan"
     />
+    <tile-login />
     <tile
       tile-icon="ri-calendar-line"
       tile-route-to="Timetable"
       tile-title="Stundenplan"
-    />
-    <tile-certificate-enrollment />
-    <tile
-      is-inverted
-      tile-icon="ri-mental-health-line"
-      tile-route-to="Health"
-      tile-title="Gesundheit"
-    />
-    <tile
-      tile-icon="ri-map-2-line"
-      tile-route-to="CampusPlan"
-      tile-title="Campus Plan"
     />
     <tile
       tile-route-to="Grades"
       tile-title="Noten"
       tile-subtitle="Eine Übersicht über deine bisherigen Leistungen"
     />
+    <tile-certificate-enrollment />
     <tile-printer-account />
     <tile-library />
     <tile-university-events />
+    <tile
+      tile-icon="ri-map-2-line"
+      tile-route-to="CampusPlan"
+      tile-title="Campus Plan"
+    />
+    <tile
+      tile-icon="ri-mental-health-line"
+      tile-route-to="Health"
+      tile-title="Gesundheit"
+    />
     <tile
       tile-icon="ri-cup-line"
       tile-route-to="Endlicht"
       tile-title="Endlicht"
     />
-    <tile-login />
     <tile tile-route-to="About" tile-title="Über" />
   </div>
 </template>
