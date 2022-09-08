@@ -1,5 +1,6 @@
 <template>
   <div class="tile-group">
+    <tile-library />
     <tile tile-title="Öffnungszeiten">
       <table id="timetable" aria-label="Öffnungszeiten der Bibliothek">
         <tr v-for="(day, index) in times" :key="weekdays[index]">
@@ -19,11 +20,9 @@
       78462 Konstanz
       <br />
       <br />
-      Tel: 07531/206-580
+      <a href="tel:07531/206-580" class="link white-txt">07531/206-580</a>
       <br />
-      Fax: 07531/206-587
-      <br />
-      <a class="link decorate" href="mailto:bib-service@htwg-konstanz.de"
+      <a class="link email white-txt" href="mailto:bib-service@htwg-konstanz.de"
         >bib-service@htwg-konstanz.de</a
       >
     </tile>
@@ -35,10 +34,11 @@ import { get } from "@/helpers/fetchData";
 import Tile from "@/components/tiles/TileComponent.vue";
 import { defineComponent, onMounted, Ref, ref } from "vue";
 import { weekdays } from "@/helpers/dateHelper";
+import TileLibrary from "@/components/tiles/Tile_Library.vue";
 
 export default defineComponent({
   name: "View_Library",
-  components: { Tile },
+  components: { TileLibrary, Tile },
   setup() {
     const times: any = ref([]);
     const status: Ref<number> = ref(0);
