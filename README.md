@@ -6,7 +6,7 @@ Die [HTWG App](https://github.com/htwg-app/htwg-app-front) verbindet sich mit [d
 
 ## 1. Installation
 
-Stelle zunächst sicher, dass `node@14.18.2` und `npm@6.14.15` installiert sind.
+Stelle zunächst sicher, dass `node` und `npm` installiert sind.
 
 Installiere alle Pakete, die in `package.json` angegeben sind:
 
